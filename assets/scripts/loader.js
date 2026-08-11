@@ -1,5 +1,12 @@
-// Page loader — waits until loader video is almost finished, then dismisses
+// Page loader — home only; waits until loader video is almost finished
 (function () {
+    // Only run on home (index.html or site root)
+    const path = (window.location.pathname || '').replace(/\/+$/, '');
+    const file = path.split('/').pop() || '';
+    const isHome = file === '' || file === 'index.html' || file === 'index.htm';
+    if (!isHome) return;
+    if (!document.getElementById('page-loader')) return;
+
     const VIDEO_COMPLETE_RATIO = 0.92; // hide when ~92% played
     const MAX_WAIT_MS = 20000;
     const FALLBACK_MIN_MS = 2500;
