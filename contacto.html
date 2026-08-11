@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTÁCTANOS | B'UI</title>
+
+    <meta name="description" content="Contáctanos: comparte tus opiniones, preguntas o dudas sobre b'ui. Consulta también nuestras preguntas frecuentes.">
+    <meta name="author" content="Rodney Parker">
+
+    <link rel="shortcut icon" href="./favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="page-loader" class="page-loader">
+        <div class="loader-content">
+            <img src="assets/images/loader.gif" alt="Cargando..." class="loader-gif">
+            <p class="loader-text">Cargando...</p>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="header__content">
+            <div class="header__left">
+                <a href="index.html"><img src="assets/images/logo.png" alt="BUI Logo" class="header__logo"></a>
+            </div>
+            <nav class="header__nav">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item"><a href="sobre-bui.html" class="header__nav-link">Nosotros</a></li>
+                    <li class="header__nav-item header__nav-item--dropdown">
+                        <button type="button" class="header__nav-link header__nav-link--dropdown" aria-expanded="false" aria-haspopup="true" aria-controls="productos-submenu">
+                            Productos
+                            <span class="header__nav-caret" aria-hidden="true"></span>
+                        </button>
+                        <ul class="header__submenu" id="productos-submenu">
+                            <li class="header__submenu-item">
+                                <a href="agua-natural.html" class="header__submenu-link">Agua natural</a>
+                            </li>
+                            <li class="header__submenu-item">
+                                <a href="agua-gasificada.html" class="header__submenu-link">Agua gasificada</a>
+                            </li>
+                            <li class="header__submenu-item">
+                                <a href="infusiones.html" class="header__submenu-link">Infusiones</a>
+                            </li>
+                            <li class="header__submenu-item">
+                                <a href="kids.html" class="header__submenu-link">b'ui Kids</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="header__nav-item"><a href="contacto.html" class="header__nav-link">Contacto</a></li>
+                </ul>
+                <button class="header__hamburger" aria-label="Toggle menu">
+                    <span class="header__hamburger-line"></span>
+                    <span class="header__hamburger-line"></span>
+                    <span class="header__hamburger-line"></span>
+                </button>
+            </nav>
+            <div class="header__right">
+                <button class="header__language-switcher">
+                    <span class="header__flag">🇪🇸</span>
+                    <span class="header__lang-text">ESP</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="sobre-distribuidor">
+        <div class="sobre-distribuidor__content">
+            <div class="sobre-distribuidor__text">
+                <h2 class="sobre-distribuidor__title">Contáctanos</h2>
+                <p class="sobre-distribuidor__paragraph">Compártenos tus opiniones, preguntas, duda o saludos, estaremos encantados de poder conversar.</p>
+                <div class="sobre-distribuidor__contact">
+                    <p>¡Gracias por elegir b'ui!</p>
+                    <p>México: <a href="mailto:contacto@buiwater.com">contacto@buiwater.com</a></p>
+                    <p>+52 56 1015 12 13</p>
+                    <p>US and Canada: <a href="mailto:linda.ruiz@buiwater.com">linda.ruiz@buiwater.com</a></p>
+                </div>
+            </div>
+            <form class="sobre-distribuidor__form">
+                <div class="sobre-distribuidor__form-grid">
+                    <div class="sobre-distribuidor__field">
+                        <input type="text" placeholder="Nombre" name="nombre">
+                    </div>
+                    <div class="sobre-distribuidor__field">
+                        <input type="text" placeholder="Apellido" name="apellido">
+                    </div>
+                    <div class="sobre-distribuidor__field sobre-distribuidor__field--full">
+                        <input type="email" placeholder="Correo Electrónico" name="correo">
+                    </div>
+                    <div class="sobre-distribuidor__field sobre-distribuidor__field--full">
+                        <textarea placeholder="Mensaje" name="mensaje" rows="1"></textarea>
+                    </div>
+                </div>
+                <button type="button" class="sobre-distribuidor__submit">ENVIAR</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <hr class="faq__divider">
+        <h2 class="faq__title">Preguntas frecuentes</h2>
+        <div class="faq__list">
+            <div class="faq__item is-open">
+                <button type="button" class="faq__question">
+                    <span>¿Cuál es la diferencia entre b'ui y otras aguas en el mercado?</span>
+                    <span class="faq__icon"></span>
+                </button>
+                <div class="faq__answer">
+                    <p class="faq__answer-text">b'ui se extrae de manantiales profundos y se embotella sin alterar su composición natural, conservando su equilibrio mineral, pH neutro y baja salinidad tal como la entrega la fuente.</p>
+                </div>
+            </div>
+            <div class="faq__item">
+                <button type="button" class="faq__question">
+                    <span>¿Dónde puedo comprar b'ui?</span>
+                    <span class="faq__icon"></span>
+                </button>
+                <div class="faq__answer">
+                    <p class="faq__answer-text">Puedes encontrar b'ui en Costco, Sam's Club y Walmart, además de comprarla directamente con nosotros a través de este sitio.</p>
+                </div>
+            </div>
+            <div class="faq__item">
+                <button type="button" class="faq__question">
+                    <span>¿Es posible que el agua de manantial se acabe?</span>
+                    <span class="faq__icon"></span>
+                </button>
+                <div class="faq__answer">
+                    <p class="faq__answer-text">Nuestros manantiales son monitoreados constantemente para asegurar una extracción responsable y sustentable en el tiempo.</p>
+                </div>
+            </div>
+            <div class="faq__item">
+                <button type="button" class="faq__question">
+                    <span>¿Cómo embotellan b'ui?</span>
+                    <span class="faq__icon"></span>
+                </button>
+                <div class="faq__answer">
+                    <p class="faq__answer-text">b'ui se embotella en vidrio directamente en la fuente, minimizando el manejo para preservar su pureza y propiedades originales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="marquee">
+        <div class="marquee__content">
+            <span class="marquee__text">ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  </span>
+            <span class="marquee__text">ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  </span>
+        </div>
+    </section>
+
+    <section class="tagline">
+        <p class="tagline__text">ERES LO QUE TOMAS</p>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__grid">
+            <div class="footer__bottle">
+                <img src="assets/images/botella.png" alt="BUI Water Bottle" class="footer__bottle-image">
+            </div>
+
+            <div class="footer__nav-container">
+                <div class="footer__nav-col">
+                    <h4 class="footer__nav-heading">Sobre b'ui</h4>
+                    <nav class="footer__nav">
+                        <a href="sobre-bui.html" class="footer__nav-link">Nosotros</a>
+                        <a href="contacto.html" class="footer__nav-link">Contacto</a>
+                        <a href="contacto.html#faq" class="footer__nav-link">FAQ</a>
+                    </nav>
+                </div>
+                <div class="footer__nav-col">
+                    <h4 class="footer__nav-heading">Productos</h4>
+                    <nav class="footer__nav">
+                        <a href="agua-natural.html" class="footer__nav-link">Agua natural</a>
+                        <a href="agua-gasificada.html" class="footer__nav-link">Agua mineral</a>
+                        <a href="infusiones.html" class="footer__nav-link">Infusiones</a>
+                        <a href="kids.html" class="footer__nav-link">b'ui Kids</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="footer__gallery-container">
+                <div class="footer__gallery">
+                    <img src="assets/images/asi.png" alt="Logotipo ASI" class="footer__gallery-image">
+                    <img src="assets/images/fda.png" alt="Logotipo FDA" class="footer__gallery-image">
+                    <img src="assets/images/fsc.png" alt="Logotipo FSC" class="footer__gallery-image">
+                    <img src="assets/images/fws.png" alt="Logotipo fws" class="footer__gallery-image">
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <div class="footer__social">
+                    <a href="https://wa.me/your-number" class="footer__social-link" aria-label="WhatsApp">
+                        <svg class="footer__social-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.905 3.488"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/your-profile" class="footer__social-link" aria-label="Instagram">
+                        <svg class="footer__social-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
+                <a href="/privacy-policy" class="footer__privacy-link">Política de Privacidad</a>
+                <span class="footer__copyright">© buiwater 2024</span>
+            </div>
+        </div>
+    </footer>
+
+<script src="assets/scripts/loader.js"></script>
+<script src="assets/scripts/index.js"></script>
+<script src="assets/scripts/preload-media.js"></script>
+<script src="assets/scripts/reveal.js"></script>
+<script>
+    (function () {
+        var items = document.querySelectorAll('.faq__item');
+        items.forEach(function (item) {
+            var question = item.querySelector('.faq__question');
+            question.addEventListener('click', function () {
+                var wasOpen = item.classList.contains('is-open');
+                items.forEach(function (i) { i.classList.remove('is-open'); });
+                if (!wasOpen) item.classList.add('is-open');
+            });
+        });
+    })();
+</script>
+</body>
+</html>

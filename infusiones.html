@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFUSIONES GASIFICADAS | B'UI</title>
+
+    <meta name="description" content="Infusiones gasificadas b'ui: notas refrescantes de pepino o hierbabuena, sin calorías.">
+    <meta name="author" content="Rodney Parker">
+
+    <link rel="shortcut icon" href="./favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="page-loader" class="page-loader">
+        <div class="loader-content">
+            <img src="assets/images/loader.gif" alt="Cargando..." class="loader-gif">
+            <p class="loader-text">Cargando...</p>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="header__content">
+            <div class="header__left">
+                <a href="index.html"><img src="assets/images/logo.png" alt="BUI Logo" class="header__logo"></a>
+            </div>
+            <nav class="header__nav">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item"><a href="sobre-bui.html" class="header__nav-link">Nosotros</a></li>
+                    <li class="header__nav-item header__nav-item--dropdown">
+                        <button type="button" class="header__nav-link header__nav-link--dropdown" aria-expanded="false" aria-haspopup="true" aria-controls="productos-submenu">
+                            Productos
+                            <span class="header__nav-caret" aria-hidden="true"></span>
+                        </button>
+                        <ul class="header__submenu" id="productos-submenu">
+                            <li class="header__submenu-item">
+                                <a href="agua-natural.html" class="header__submenu-link">Agua natural</a>
+                            </li>
+                            <li class="header__submenu-item">
+                                <a href="agua-gasificada.html" class="header__submenu-link">Agua gasificada</a>
+                            </li>
+                            <li class="header__submenu-item">
+                                <a href="infusiones.html" class="header__submenu-link">Infusiones</a>
+                            </li>
+                            <li class="header__submenu-item">
+                                <a href="kids.html" class="header__submenu-link">b'ui Kids</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="header__nav-item"><a href="contacto.html" class="header__nav-link">Contacto</a></li>
+                </ul>
+                <button class="header__hamburger" aria-label="Toggle menu">
+                    <span class="header__hamburger-line"></span>
+                    <span class="header__hamburger-line"></span>
+                    <span class="header__hamburger-line"></span>
+                </button>
+            </nav>
+            <div class="header__right">
+                <button class="header__language-switcher">
+                    <span class="header__flag">🇪🇸</span>
+                    <span class="header__lang-text">ESP</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="producto-hero producto-hero--equal">
+        <div class="producto-hero__panel">
+            <img id="infusionHeroLeft" src="assets/images/infusiones-pepino-hero-1.png" alt="Botella b'ui infusión pepino" class="producto-hero__image">
+        </div>
+        <div class="producto-hero__panel producto-hero__panel--right">
+            <img id="infusionHeroRight" src="assets/images/infusiones-pepino-hero-2.png" alt="Hojas de menta sobre agua" class="producto-hero__image">
+        </div>
+    </section>
+
+    <div class="producto-titlebar">
+        <h1 class="producto-titlebar__title">Infusiones Gasificadas</h1>
+    </div>
+
+    <div class="producto-tabs">
+        <button type="button" class="producto-tabs__tab is-active" data-infusion="pepino">Pepino</button>
+        <button type="button" class="producto-tabs__tab" data-infusion="hierbabuena">Hierbabuena</button>
+    </div>
+
+    <section class="producto-presentacion">
+        <div class="producto-presentacion__image-wrap" id="infusionImageWrap" style="--presentacion-circle:#e7f5e8;">
+            <img id="infusionBottleImage" src="assets/images/agua-infusionada-pepino.png" alt="Botella b'ui infusión pepino" class="producto-presentacion__image">
+        </div>
+        <div class="producto-presentacion__content">
+            <h2 class="producto-presentacion__title" id="infusionTitle">Pepino Infusión</h2>
+            <p class="producto-presentacion__paragraph" id="infusionParagraph1">Nuestra agua infusionada ligeramente carbonatada presenta notas refrescantes de pepino, lo que ofrece una alternativa perfecta y sin calorías para los rituales de bienestar.</p>
+            <p class="producto-presentacion__paragraph" id="infusionParagraph2">Además es ideal como mezclador o acompañamiento sofisticado de licores de primera calidad, aporta un toque de elegancia y sabor a cualquier bebida.</p>
+            <div class="producto-presentacion__specs">
+                <div>
+                    <p class="producto-presentacion__spec-label">Envase</p>
+                    <p class="producto-presentacion__spec-value">Vidrio</p>
+                </div>
+                <div>
+                    <p class="producto-presentacion__spec-label">Presentaciones</p>
+                    <p class="producto-presentacion__spec-value">290ml</p>
+                </div>
+                <div>
+                    <p class="producto-presentacion__spec-label">Balance</p>
+                    <p class="producto-presentacion__spec-value">Gasificada sin calorías</p>
+                </div>
+                <div>
+                    <p class="producto-presentacion__spec-label">Temperatura</p>
+                    <p class="producto-presentacion__spec-value">14°C</p>
+                </div>
+            </div>
+            <p class="producto-presentacion__note">60% del vidrio es reciclado</p>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            var data = {
+                pepino: {
+                    heroLeft: 'assets/images/infusiones-pepino-hero-1.png',
+                    heroRight: 'assets/images/infusiones-pepino-hero-2.png',
+                    bottle: 'assets/images/agua-infusionada-pepino.png',
+                    circleColor: '#e7f5e8',
+                    title: 'Pepino Infusión',
+                    p1: 'Nuestra agua infusionada ligeramente carbonatada presenta notas refrescantes de pepino, lo que ofrece una alternativa perfecta y sin calorías para los rituales de bienestar.',
+                    p2: 'Además es ideal como mezclador o acompañamiento sofisticado de licores de primera calidad, aporta un toque de elegancia y sabor a cualquier bebida.'
+                },
+                hierbabuena: {
+                    heroLeft: 'assets/images/infusiones-pepino-hero-1.png',
+                    heroRight: 'assets/images/infusiones-pepino-hero-2.png',
+                    bottle: 'assets/images/agua-infusionada-hierbabuena.png',
+                    circleColor: '#334217',
+                    title: 'Hierbabuena Infusión',
+                    p1: 'Nuestra agua infusionada ligeramente carbonatada presenta notas frescas de hierbabuena, ideal para despejar los sentidos en cualquier momento del día.',
+                    p2: 'Además es ideal como mezclador o acompañamiento sofisticado de licores de primera calidad, aporta un toque de frescura y sabor a cualquier bebida.'
+                }
+            };
+
+            var tabs = document.querySelectorAll('.producto-tabs__tab[data-infusion]');
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    var key = tab.getAttribute('data-infusion');
+                    var d = data[key];
+                    if (!d) return;
+
+                    tabs.forEach(function (t) { t.classList.remove('is-active'); });
+                    tab.classList.add('is-active');
+
+                    document.getElementById('infusionHeroLeft').src = d.heroLeft;
+                    document.getElementById('infusionHeroRight').src = d.heroRight;
+                    document.getElementById('infusionBottleImage').src = d.bottle;
+                    document.getElementById('infusionImageWrap').style.setProperty('--presentacion-circle', d.circleColor);
+                    document.getElementById('infusionTitle').textContent = d.title;
+                    document.getElementById('infusionParagraph1').textContent = d.p1;
+                    document.getElementById('infusionParagraph2').textContent = d.p2;
+                });
+            });
+        })();
+    </script>
+
+    <div class="producto-cta">
+        <a href="contacto.html" class="producto-cta-button">COMPRA DIRECTAMENTE CON NOSOTROS</a>
+    </div>
+
+    <section class="producto-encuentra">
+        <h2 class="producto-encuentra__title">Encuentra b'ui en</h2>
+        <div class="producto-encuentra__logos">
+            <div class="producto-encuentra__logo">LOGO</div>
+            <div class="producto-encuentra__logo">LOGO</div>
+            <div class="producto-encuentra__logo">LOGO</div>
+            <div class="producto-encuentra__logo">LOGO</div>
+            <div class="producto-encuentra__logo">LOGO</div>
+            <div class="producto-encuentra__logo">LOGO</div>
+        </div>
+    </section>
+
+    <section class="marquee">
+        <div class="marquee__content">
+            <span class="marquee__text">ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  </span>
+            <span class="marquee__text">ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  ERES LO QUE TOMAS  |  </span>
+        </div>
+    </section>
+
+    <section class="distribuidor">
+        <div class="distribuidor__content">
+            <div class="distribuidor__text">
+                <h2 class="distribuidor__title">SÉ DISTRIBUIDOR DE B'UI</h2>
+                <p class="distribuidor__subtitle">Haz crecer tu negocio con b'ui. Conviértete en distribuidor y descubre las oportunidades de formar parte de una marca en expansión.</p>
+            </div>
+            <button type="button" class="distribuidor__button" data-open-distribuidor>COMENZAR MI REGISTRO</button>
+        </div>
+    </section>
+
+    <div class="distribuidor-panel" id="distribuidorPanel" aria-hidden="true">
+        <div class="distribuidor-panel__backdrop" data-close-distribuidor></div>
+        <div class="distribuidor-panel__sheet" role="dialog" aria-modal="true" aria-labelledby="distribuidorPanelTitle">
+            <button type="button" class="distribuidor-panel__close" data-close-distribuidor aria-label="Cerrar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <section class="sobre-distribuidor" id="contacto">
+                <div class="sobre-distribuidor__content">
+                    <div class="sobre-distribuidor__text">
+                        <h2 class="sobre-distribuidor__title" id="distribuidorPanelTitle">Sé un distribuidor</h2>
+                        <p class="sobre-distribuidor__paragraph">Haz crecer tu negocio con b'ui. Conviértete en distribuidor y descubre las oportunidades de formar parte de una marca en expansión.</p>
+                        <div class="sobre-distribuidor__contact">
+                            <p>¡Queremos saber de ti!</p>
+                            <p>México: <a href="mailto:contacto@buiwater.com">contacto@buiwater.com</a></p>
+                            <p>+52 56 1015 12 13</p>
+                            <p>US and Canada: <a href="mailto:linda.ruiz@buiwater.com">linda.ruiz@buiwater.com</a></p>
+                        </div>
+                    </div>
+                    <form class="sobre-distribuidor__form">
+                        <div class="sobre-distribuidor__form-grid">
+                            <div class="sobre-distribuidor__field">
+                                <input type="text" placeholder="Nombre" name="nombre">
+                            </div>
+                            <div class="sobre-distribuidor__field">
+                                <input type="text" placeholder="Apellido" name="apellido">
+                            </div>
+                            <div class="sobre-distribuidor__field">
+                                <input type="tel" placeholder="Teléfono" name="telefono">
+                            </div>
+                            <div class="sobre-distribuidor__field">
+                                <input type="email" placeholder="Correo Electrónico" name="correo">
+                            </div>
+                            <div class="sobre-distribuidor__field sobre-distribuidor__field--full">
+                                <input type="text" placeholder="Nombre de tu empresa" name="empresa">
+                            </div>
+                            <div class="sobre-distribuidor__field sobre-distribuidor__field--full">
+                                <textarea placeholder="Mensaje" name="mensaje" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <button type="button" class="sobre-distribuidor__submit">ENVIAR</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <section class="tagline">
+        <p class="tagline__text">ERES LO QUE TOMAS</p>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__grid">
+            <div class="footer__bottle">
+                <img src="assets/images/botella.png" alt="BUI Water Bottle" class="footer__bottle-image">
+            </div>
+
+            <div class="footer__nav-container">
+                <div class="footer__nav-col">
+                    <h4 class="footer__nav-heading">Sobre b'ui</h4>
+                    <nav class="footer__nav">
+                        <a href="sobre-bui.html" class="footer__nav-link">Nosotros</a>
+                        <a href="contacto.html" class="footer__nav-link">Contacto</a>
+                        <a href="contacto.html#faq" class="footer__nav-link">FAQ</a>
+                    </nav>
+                </div>
+                <div class="footer__nav-col">
+                    <h4 class="footer__nav-heading">Productos</h4>
+                    <nav class="footer__nav">
+                        <a href="agua-natural.html" class="footer__nav-link">Agua natural</a>
+                        <a href="agua-gasificada.html" class="footer__nav-link">Agua mineral</a>
+                        <a href="infusiones.html" class="footer__nav-link">Infusiones</a>
+                        <a href="kids.html" class="footer__nav-link">b'ui Kids</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="footer__gallery-container">
+                <div class="footer__gallery">
+                    <img src="assets/images/asi.png" alt="Logotipo ASI" class="footer__gallery-image">
+                    <img src="assets/images/fda.png" alt="Logotipo FDA" class="footer__gallery-image">
+                    <img src="assets/images/fsc.png" alt="Logotipo FSC" class="footer__gallery-image">
+                    <img src="assets/images/fws.png" alt="Logotipo fws" class="footer__gallery-image">
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <div class="footer__social">
+                    <a href="https://wa.me/your-number" class="footer__social-link" aria-label="WhatsApp">
+                        <svg class="footer__social-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.905 3.488"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/your-profile" class="footer__social-link" aria-label="Instagram">
+                        <svg class="footer__social-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
+                <a href="/privacy-policy" class="footer__privacy-link">Política de Privacidad</a>
+                <span class="footer__copyright">© buiwater 2024</span>
+            </div>
+        </div>
+    </footer>
+
+<script src="assets/scripts/loader.js"></script>
+<script src="assets/scripts/index.js"></script>
+<script src="assets/scripts/preload-media.js"></script>
+<script src="assets/scripts/reveal.js"></script>
+</body>
+</html>

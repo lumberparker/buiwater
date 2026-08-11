@@ -1,0 +1,24 @@
+
+@import url("assets/fonts/fonts.css");
+@import url("assets/blocks/loader.css");
+@import url("assets/blocks/page.css");
+@import url("assets/blocks/header.css");
+@import url("assets/blocks/hero.css");
+@import url("assets/blocks/marquee.css");
+@import url("assets/blocks/presentaciones.css");
+@import url("assets/blocks/categorias.css");
+@import url("assets/blocks/conoce.css");
+@import url("assets/blocks/propiedades.css");
+@import url("assets/blocks/productos.css");
+@import url("assets/blocks/showcase.css");
+@import url("assets/blocks/encuentra.css");
+@import url("assets/blocks/distribuidor.css");
+@import url("assets/blocks/tagline.css");
+@import url("assets/blocks/sobre.css");
+@import url("assets/blocks/producto.css");
+@import url("assets/blocks/kids.css");
+@import url("assets/blocks/contacto.css");
+@import url("assets/blocks/footer.css");
+/* Load last: titles Poppins, body/UI Josefin (menu) */
+@import url("assets/blocks/typography.css");
+@import url("assets/blocks/reveal.css");
