@@ -1,0 +1,264 @@
+/* ====================================
+   b'ui Kids PRODUCT PAGE
+   ==================================== */
+
+.kids-hero {
+    width: 100%;
+    overflow: hidden;
+    background-color: #c8e4f0;
+    line-height: 0;
+}
+
+.kids-hero__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: min(70vh, 560px);
+    object-fit: contain;
+    object-position: center center;
+}
+
+.kids-intro {
+    max-width: 1291px;
+    margin: 0 auto;
+    padding: 40px 40px 50px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    border-bottom: 1px solid #000000;
+}
+
+.kids-intro__title {
+    margin: 0;
+    font-family: var(--font-josefin);
+    font-weight: 700;
+    font-size: clamp(28px, 2.6vw, 40px);
+    line-height: 1.15;
+    color: #000000;
+}
+
+.kids-intro__benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 40px;
+}
+
+.kids-intro__benefits p {
+    margin: 0;
+    font-family: var(--font-josefin);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #000000;
+}
+
+.kids-flavors {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 40px 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+}
+
+/*
+  Carton sits in front of the circle (same idea as product presentacion):
+  disc is a background layer; image can overflow the circle edges.
+*/
+.kids-flavor__media {
+    position: relative;
+    width: min(280px, 100%);
+    height: min(320px, 42vw);
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    overflow: visible;
+}
+
+.kids-flavor__circle {
+    position: absolute;
+    left: 50%;
+    top: 54%;
+    transform: translate(-50%, -50%);
+    width: min(240px, 85%);
+    aspect-ratio: 1;
+    height: auto;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.kids-flavor__image {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    width: auto;
+    max-width: 62%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.1));
+}
+
+.kids-flavor__name {
+    margin: 0 0 4px;
+    font-family: var(--font-josefin);
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.kids-flavor__name--mango {
+    color: #e0a820;
+}
+
+.kids-flavor__name--manzana {
+    color: #d94a40;
+}
+
+.kids-flavor__name--naranja {
+    color: #e07a20;
+}
+
+.kids-flavor__size {
+    margin: 0;
+    font-family: var(--font-josefin);
+    font-weight: 400;
+    font-size: 15px;
+    color: #000000;
+}
+
+.kids-pack {
+    max-width: 1100px;
+    margin: 20px auto 70px;
+    padding: 40px 48px;
+    background-color: #d7eaf5;
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 24px 30px;
+    align-items: center;
+}
+
+.kids-pack__title {
+    margin: 0 0 16px;
+    font-family: var(--font-josefin);
+    font-weight: 700;
+    font-size: clamp(28px, 2.4vw, 40px);
+    line-height: 1.15;
+    color: #000000;
+}
+
+.kids-pack__text {
+    margin: 0;
+    font-family: var(--font-josefin);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000000;
+    max-width: 280px;
+}
+
+/* Box behind; three cartons layered in front (design composition) */
+.kids-pack__media {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    margin-left: auto;
+    min-height: 240px;
+    padding: 12px 0 0;
+}
+
+.kids-pack__caja {
+    display: block;
+    width: 78%;
+    max-width: 380px;
+    height: auto;
+    object-fit: contain;
+    margin-left: auto;
+    position: relative;
+    z-index: 0;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.08));
+}
+
+.kids-pack__flavors {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.kids-pack__carton {
+    width: clamp(58px, 9vw, 88px);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.12));
+}
+
+.kids-pack__carton--mango {
+    transform: translateY(-6px) rotate(-2deg);
+}
+
+.kids-pack__carton--manzana {
+    transform: translateY(0);
+    z-index: 2;
+}
+
+.kids-pack__carton--naranja {
+    transform: translateY(-4px) rotate(2deg);
+}
+
+@media (max-width: 900px) {
+    .kids-intro {
+        grid-template-columns: 1fr;
+        padding: 32px 24px 40px;
+        gap: 24px;
+    }
+
+    .kids-flavors {
+        grid-template-columns: 1fr;
+        padding: 50px 24px 40px;
+        gap: 36px;
+    }
+
+    .kids-pack {
+        grid-template-columns: 1fr;
+        margin: 10px 20px 50px;
+        padding: 32px 24px;
+        text-align: center;
+    }
+
+    .kids-pack__text {
+        max-width: none;
+    }
+
+    .kids-pack__media {
+        justify-content: center;
+        min-height: 200px;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .kids-pack__flavors {
+        left: 8%;
+        bottom: 4%;
+    }
+
+    .kids-pack__carton {
+        width: clamp(48px, 14vw, 72px);
+    }
+}
+
+@media (max-width: 600px) {
+    .kids-intro__benefits {
+        grid-template-columns: 1fr;
+    }
+
+    .kids-hero__image {
+        max-height: 42vh;
+    }
+}

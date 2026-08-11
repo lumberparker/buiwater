@@ -1,0 +1,153 @@
+{
+  "productos": [
+    {
+      "id": "agua-natural",
+      "nombre": "Agua Natural de Manantial",
+      "page": "agua-natural.html",
+      "presentaciones": [
+        {
+          "id": "vidrio",
+          "nombre": "Vidrio",
+          "atributos": {
+            "imagen": "agua-natural.png",
+            "imagenAlt": "Botella b'ui agua natural",
+            "circleColor": "#dceef8",
+            "tituloHtml": "Presentación<br>Vidrio",
+            "parrafos": [
+              "Una botella elegante que combina armoniosamente con el agua que contiene.",
+              "El material permite que se conserven perfectamente todas las propiedades de b'ui, manteniendo su sabor y pureza intactos."
+            ],
+            "specs": [
+              { "label": "Envase", "value": "Vidrio" },
+              { "label": "Presentaciones", "value": "290ml<br>473ml<br>946ml" },
+              { "label": "Temperatura", "value": "14°C" }
+            ],
+            "nota": "60% del vidrio es reciclado"
+          }
+        },
+        {
+          "id": "tetra-pak",
+          "nombre": "Tetra Pak",
+          "atributos": {
+            "imagen": "bui_natural_tetrapak.png",
+            "imagenAlt": "b'ui Tetra Pak agua natural",
+            "circleColor": "#dcd9d9",
+            "tituloHtml": "Presentación<br>Tetra Pak",
+            "parrafos": [
+              "Los envases Tetra Pak reducen la huella ambiental y de carbono mientras conservan el sabor y la composición original del agua.",
+              "Además de ser una opción práctica para almacenar y transportar."
+            ],
+            "specs": [
+              { "label": "Certificación FSC®", "value": "(Forest Stewardship Council)" },
+              { "label": "Certificación ASI", "value": "(Aluminium Stewardship Initiative)" },
+              { "label": "Envase", "value": "Tetra Pak" },
+              { "label": "Presentaciones", "value": "330ml<br>500ml" },
+              { "label": "Temperatura", "value": "14°C" }
+            ],
+            "nota": "Bueno para ti y bueno para el ambiente"
+          }
+        },
+        {
+          "id": "biopack",
+          "nombre": "Biopack",
+          "atributos": {
+            "imagen": "bui_natural_biopack.png",
+            "imagenAlt": "b'ui Biopack agua natural",
+            "circleColor": "#f0ebe3",
+            "tituloHtml": "Presentación<br>Biopack",
+            "parrafos": [
+              "Las botellas tienen Eco-One, una mezcla patentada de compuestos orgánicos que permiten la biodegradación acelerada (en promedio 1-5 años).",
+              "Se desintegran aceleradamente en condiciones naturales, sin procesos químicos de por medio."
+            ],
+            "specs": [{ "label": "Envase", "value": "Eco-One" },
+              { "label": "Presentaciones", "value": "330ml<br>500ml<br>1L" },
+              { "label": "Temperatura", "value": "14°C" }],
+            "nota": "100% Biodegradable"
+          }
+        }
+      ]
+    },
+    {
+      "id": "agua-gasificada",
+      "nombre": "Agua de Manantial Gasificada",
+      "page": "agua-gasificada.html",
+      "presentaciones": [
+        {
+          "id": "vidrio",
+          "nombre": "Vidrio",
+          "atributos": {
+            "imagen": "agua-gasificada.png",
+            "imagenAlt": "Botella b'ui agua gasificada",
+            "circleColor": "#d8e6ee",
+            "tituloHtml": "Presentación<br>Vidrio",
+            "parrafos": [
+              "b'ui gasificada tiene la misma pureza que la versión natural pero con burbujas ligeras que hacen de la experiencia de beberla algo diferente."
+            ],
+            "specs": [
+              { "label": "Envase", "value": "Vidrio" },
+              { "label": "Balance", "value": "Gasificada sin calorías" },
+              { "label": "Presentaciones", "value": "290ml<br>473ml<br>946ml" },
+              { "label": "Temperatura", "value": "14°C" }
+            ],
+            "nota": "60% del vidrio es reciclado"
+          }
+        }
+      ]
+    },
+    {
+      "id": "infusiones",
+      "nombre": "Infusiones Gasificadas",
+      "page": "infusiones.html",
+      "presentaciones": [
+        {
+          "id": "pepino",
+          "nombre": "Pepino",
+          "atributos": {
+            "imagen": "agua-infusionada-pepino.png",
+            "imagenAlt": "Botella b'ui infusión pepino",
+            "circleColor": "#c3d59e",
+            "tituloHtml": "Pepino<br>Infusión",
+            "parrafos": [
+              "Nuestra agua infusionada ligeramente carbonatada presenta notas refrescantes de pepino, lo que ofrece una alternativa perfecta y sin calorías para los rituales de bienestar.",
+              "Además es ideal como mezclador o acompañamiento sofisticado de licores de primera calidad, aporta un toque de elegancia y sabor a cualquier bebida."
+            ],
+            "specs": [
+              { "label": "Envase", "value": "Vidrio" },
+              { "label": "Presentaciones", "value": "290ml" },
+              { "label": "Balance", "value": "Gasificada sin calorías" },
+              { "label": "Temperatura", "value": "14°C" } 
+            ],
+            "nota": "60% del vidrio es reciclado"
+          }
+        },
+        {
+          "id": "hierbabuena",
+          "nombre": "Hierbabuena",
+          "atributos": {
+            "imagen": "agua-infusionada-hierbabuena.png",
+            "imagenAlt": "Botella b'ui infusión hierbabuena",
+            "circleColor": "#334217",
+            "tituloHtml": "Hierbabuena<br>Infusión",
+            "parrafos": [
+              "Nuestra agua infusionada ligeramente carbonatada presenta notas refrescantes de hierbabuena, lo que ofrece una alternativa perfecta y sin calorías para los rituales de bienestar.",
+              "Además es ideal como mezclador o acompañamiento sofisticado de licores de primera calidad, aporta un toque de elegancia y sabor a cualquier bebida."
+            ],
+            "specs": [
+              { "label": "Envase", "value": "Vidrio" },
+              { "label": "Presentaciones", "value": "290ml" },
+              { "label": "Balance", "value": "Gasificada sin calorías" },
+              { "label": "Temperatura", "value": "14°C" }
+            ],
+            "nota": "60% del vidrio es reciclado"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kids",
+      "nombre": "b'ui Kids",
+      "page": "kids.html",
+      "presentaciones": []
+    }
+  ]
+}

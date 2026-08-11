@@ -1,0 +1,131 @@
+/* ====================================
+   DISTRIBUIDOR CTA BANNER
+   ==================================== */
+.distribuidor {
+    width: 100%;
+    background-color: #e9eac0;
+    margin-bottom: 20px;
+}
+
+.distribuidor__content {
+    max-width: 1291px;
+    margin: 0 auto;
+    padding: 50px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.distribuidor__title {
+    font-family: var(--font-josefin);
+    font-weight: 700;
+    font-size: 1.8vw;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 0 14px 0;
+}
+
+.distribuidor__subtitle {
+    font-family: var(--font-josefin);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000000;
+    margin: 0;
+    max-width: 600px;
+}
+
+.distribuidor__button {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: var(--font-josefin);
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    border: none;
+    padding: 16px 32px;
+    cursor: pointer;
+    border-radius: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+/* ====================================
+   INLINE REGISTRATION PANEL
+   Expands in normal document flow (pushes the marquee/footer
+   below it down) instead of sliding over the page as an overlay.
+   ==================================== */
+.distribuidor-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background-color: #f6f4f5;
+}
+
+.distribuidor-panel.is-open {
+    grid-template-rows: 1fr;
+}
+
+.distribuidor-panel__backdrop {
+    display: none;
+}
+
+.distribuidor-panel__sheet {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.distribuidor-panel__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #000000;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.distribuidor-panel__close:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+/* Panel reuses .sobre-distribuidor form styles */
+.distribuidor-panel .sobre-distribuidor {
+    background-color: transparent;
+    position: relative;
+}
+
+.distribuidor-panel .sobre-distribuidor__content {
+    padding-top: 24px;
+}
+
+@media (max-width: 768px) {
+    .distribuidor__content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 20px;
+        gap: 24px;
+    }
+
+    .distribuidor__title {
+        font-size: 26px;
+    }
+
+    .distribuidor__button {
+        width: 100%;
+    }
+}

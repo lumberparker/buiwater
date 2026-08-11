@@ -1,0 +1,76 @@
+/* ====================================
+   SCROLL REVEAL ENTRANCES
+   Elements enter from different directions as they hit the viewport.
+   ==================================== */
+
+/*
+  Slower entrances so motion is readable as you reach each section.
+*/
+.reveal {
+    opacity: 0.12;
+    transition:
+        opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+}
+
+/* Categorias cards: always fully visible on open (no scroll reveal) */
+
+/* Directions — enough travel to read, not so far it feels empty */
+.reveal--up,
+.reveal--up-soft {
+    transform: translate3d(0, 40px, 0);
+}
+
+.reveal--down {
+    transform: translate3d(0, -32px, 0);
+}
+
+.reveal--left {
+    transform: translate3d(-48px, 0, 0);
+}
+
+.reveal--right {
+    transform: translate3d(48px, 0, 0);
+}
+
+.reveal--scale {
+    transform: scale(0.94);
+}
+
+.reveal--fade {
+    transform: none;
+    opacity: 0.15;
+}
+
+/* In view */
+.reveal.is-inview {
+    opacity: 1;
+    transform: none;
+}
+
+/* Hero: play on load, not on scroll */
+.reveal--hero-load {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0);
+    transition:
+        opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0.12s);
+}
+
+.reveal--hero-load.is-inview {
+    opacity: 1;
+    transform: none;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal--hero-load {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+    }
+}

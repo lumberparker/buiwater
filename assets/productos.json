@@ -1,0 +1,32 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "image": "/assets/images/agua-natural.png",
+      "title": "Agua de manantial natural",
+      "sizes": ["10 Oz / 290 ml", "16 Oz / 473 ml", "32 Oz / 946 ml"],
+      "circleColor": "#e3f2fd"
+    },
+    {
+      "id": 2,
+      "image": "/assets/images/agua-gasificada.png",
+      "title": "Agua de manantial natural gasificada",
+      "sizes": ["10 Oz / 290 ml", "16 Oz / 473 ml", "32 Oz / 946 ml"],
+      "circleColor": "#d9d9d9"
+    },
+    {
+      "id": 3,
+      "image": "/assets/images/agua-infusionada-pepino.png",
+      "title": "Agua de manantial Infusionada - Pepino",
+      "sizes": ["10 Oz / 290 ml"],
+      "circleColor": "#e7f5e8"
+    },
+    {
+      "id": 34,
+      "image": "/assets/images/agua-infusionada-hierbabuena.png",
+      "title": "Agua de manantial Infusionada - Hierbabuena",
+      "sizes": ["10 Oz / 290 ml"],
+      "circleColor": "#334217"
+    }
+  ]
+}

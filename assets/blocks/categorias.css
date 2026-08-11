@@ -1,0 +1,221 @@
+/* ====================================
+   CATEGORIAS SECTION (4-up image grid)
+   Reuses the .presentaciones__item/__media/__imagen/__video
+   markup so the existing hover-video + ripple JS keeps working,
+   reshaped here from circles into rectangular cards.
+   ==================================== */
+.categorias {
+    width: 100%;
+    background-color: #f6f4f5;
+    padding: 56px 40px 72px;
+    box-sizing: border-box;
+}
+
+.categorias__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 1291px;
+    margin: 0 auto;
+}
+
+.categorias__item {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+    /* Always painted on open — not gated by scroll-reveal */
+    opacity: 1;
+    transform: none;
+}
+
+a.categorias__item:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.categorias .categorias__media {
+    position: relative;
+    width: 100%;
+    height: 460px;
+    border-radius: 0;
+    overflow: hidden;
+    cursor: pointer;
+    transform: none;
+}
+
+/* No ripple rings / animations on rectangular cards */
+.categorias .presentaciones__media.categorias__media::after {
+    display: none !important;
+}
+
+/*
+  Top gradient ALWAYS visible (rest + hover) so titles stay readable.
+  Must sit above image/video (z-index 3) — otherwise the still photo
+  covers it until hover fades the image out.
+*/
+.categorias .presentaciones__media.categorias__media::before,
+.categorias .presentaciones__media.categorias__media.ripple-effect::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 48% !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    z-index: 3 !important;
+    pointer-events: none !important;
+    transition: none !important;
+    animation: none !important;
+    border: none !important;
+    background-image: none; /* solid gradient set per card below */
+}
+
+.categorias__grid > .categorias__item:nth-child(1) .presentaciones__media.categorias__media::before,
+.categorias__grid > .categorias__item:nth-child(1) .presentaciones__media.categorias__media.ripple-effect::before {
+    background: linear-gradient(to bottom, #ebf0f8 0%, rgba(235, 240, 248, 0) 100%) !important;
+}
+
+.categorias__grid > .categorias__item:nth-child(2) .presentaciones__media.categorias__media::before,
+.categorias__grid > .categorias__item:nth-child(2) .presentaciones__media.categorias__media.ripple-effect::before {
+    background: linear-gradient(to bottom, #d8e6ee 0%, rgba(216, 230, 238, 0) 100%) !important;
+}
+
+.categorias__grid > .categorias__item:nth-child(3) .presentaciones__media.categorias__media::before,
+.categorias__grid > .categorias__item:nth-child(3) .presentaciones__media.categorias__media.ripple-effect::before {
+    background: linear-gradient(to bottom, #55803f 0%, rgba(85, 128, 63, 0) 100%) !important;
+}
+
+.categorias__grid > .categorias__item:nth-child(4) .presentaciones__media.categorias__media::before,
+.categorias__grid > .categorias__item:nth-child(4) .presentaciones__media.categorias__media.ripple-effect::before {
+    background: linear-gradient(to bottom, #f2811c 0%, rgba(242, 129, 28, 0) 100%) !important;
+}
+
+.categorias .presentaciones__imagen,
+.categorias .presentaciones__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    filter: none;
+    transition: opacity 0.35s ease, transform 0.45s ease;
+    will-change: transform, opacity;
+}
+
+.categorias .presentaciones__imagen {
+    z-index: 2;
+    opacity: 1;
+}
+
+.categorias .presentaciones__video {
+    z-index: 1;
+    opacity: 0;
+    /* Always keep video in layout so it can decode/play before hover */
+    visibility: visible;
+    pointer-events: none;
+}
+
+/* Hover / JS-driven playing state: zoom + reveal video under gradient */
+.categorias .presentaciones__media.categorias__media:hover .presentaciones__imagen,
+.categorias .presentaciones__media.categorias__media.is-playing .presentaciones__imagen,
+.categorias .presentaciones__media.categorias__media:hover .presentaciones__video,
+.categorias .presentaciones__media.categorias__media.is-playing .presentaciones__video {
+    transform: scale(1.06);
+}
+
+.categorias .presentaciones__media.categorias__media:hover .presentaciones__imagen,
+.categorias .presentaciones__media.categorias__media.is-playing .presentaciones__imagen {
+    opacity: 0;
+}
+
+.categorias .presentaciones__media.categorias__media:hover .presentaciones__video,
+.categorias .presentaciones__media.categorias__media.is-playing .presentaciones__video {
+    opacity: 1;
+    z-index: 2;
+}
+
+.categorias__overlay {
+    position: absolute;
+    top: 28px;
+    left: 24px;
+    right: 24px;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.categorias__item-title {
+    font-family: var(--font-poppins);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+    color: #000000;
+    margin: 0 0 8px 0;
+}
+
+.categorias__item-subtitle {
+    font-family: var(--font-josefin);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #000000;
+    margin: 0;
+}
+
+/* ====================================
+   RESPONSIVE DESIGN
+   ==================================== */
+@media (max-width: 1024px) {
+    .categorias {
+        padding: 48px 24px 60px;
+    }
+
+    .categorias .categorias__media {
+        height: 380px;
+    }
+}
+
+@media (max-width: 768px) {
+    .categorias {
+        padding: 40px 20px 50px;
+    }
+
+    .categorias__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .categorias .categorias__media {
+        height: 320px;
+    }
+
+    .categorias__item-title {
+        font-size: 19px;
+        line-height: 22px;
+    }
+
+    .categorias__item-subtitle {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .categorias {
+        padding: 32px 16px 40px;
+    }
+
+    .categorias__grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .categorias .categorias__media {
+        height: 280px;
+    }
+}

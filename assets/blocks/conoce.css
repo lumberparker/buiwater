@@ -1,0 +1,99 @@
+.conoce {
+    width: 100%;
+    background-color: #d8e6ee; /* Light blue background per design */
+    padding: 0;
+    margin: 0;
+    min-height: 400px; /* Give it some height so it's visible */
+}
+
+.conoce__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center items */
+    position: relative;
+    padding: 80px 40px;
+    box-sizing: border-box; /* Ensure padding is included in width */
+    max-width: 1291px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.conoce__content_text {
+    flex: 1;
+    max-width: 480px;
+}
+
+.conoce__content_text-main {
+    width: 100%;
+    font-family: var(--font-josefin);
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: 0;
+    color: #000000;
+    margin: 0;
+}
+
+.conoce__content_text-button {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: var(--font-josefin);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 36px;
+    padding: 16px 28px;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.conoce__content-image {
+    width: 42%;
+    max-width: 420px;
+    height: auto;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .conoce__content {
+        padding: 50px 20px;
+        display: flex;
+        flex-direction: column-reverse; /* Stack content vertically */
+        gap: 40px;
+    }
+
+    .conoce__content_text {
+        text-align: left;
+    }
+
+    .conoce__content_text-main {
+        width: 100%; /* Full width for better centering */
+    }
+
+    .conoce__content-image {
+        width: 70%;
+    }
+
+    .conoce__content_text-button {
+        margin-left: auto;
+        margin-right: auto; /* Center the button */
+        display: block; /* Ensure block display for centering */
+    }
+}
+
+@media (max-width: 480px) {
+    .conoce__content {
+        padding: 30px 16px;
+    }
+
+    .conoce__content-image {
+        width: 85%;
+    }
+}

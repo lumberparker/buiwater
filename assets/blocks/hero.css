@@ -1,0 +1,240 @@
+.hero {
+    position: relative;
+    width: 100%;
+    max-width: 100%; /* Never exceed viewport width */
+    margin: 0 auto 14px; /* was 56px; 25% of previous gap above marquee */
+    height: 622px; /* Specific height to match video proportion */
+    overflow: hidden;
+}
+
+.hero__carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.hero__slide--active {
+    opacity: 1;
+}
+
+.hero__slide--image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f0f0f0; /* Fallback color if image doesn't load */
+    transition: filter 0.3s ease;
+}
+
+.hero__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintains aspect ratio while covering the entire area */
+    z-index: 1; /* Bring video above background but below content */
+    transition: filter 0.3s ease;
+}
+
+.hero__content {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 382px;
+    height: auto;
+    z-index: 10;
+    color: #000000;
+    background-color: #ffffff;
+    text-align: left;
+    padding: 36px 32px;
+    box-sizing: border-box;
+}
+
+.hero__content-title {
+    font-family: var(--font-josefin);
+    font-weight: 700;
+    font-style: normal;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 0 18px 0;
+}
+
+.hero__content-subtitle {
+    width: 100%;
+    height: auto;
+    font-family: var(--font-josefin);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0;
+    margin: 0;
+    color: #000000;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+/* ====================================
+   RESPONSIVE DESIGN
+   ==================================== */
+@media (max-width: 1291px) {
+    .hero {
+        width: 100%;
+        max-width: 100vw;
+        height: calc(100vw * 622 / 1291); /* Maintains 1291:622 aspect ratio */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero__content {
+        width: calc(100% - 40px); /* Responsive width */
+        max-width: 382px; /* Don't exceed original width */
+        left: 20px;
+        height: auto; /* Allow height to adjust based on content */
+        padding: 10px;
+    }
+    
+    .hero__content-title {
+        font-size: 2.5rem;
+        line-height: 1.2; /* Better line height for mobile */
+    }
+    
+    .hero__content-subtitle {
+        width: calc(100% - 40px);
+        max-width: 324px;
+        font-size: 18px;
+        line-height: 20px;
+    }
+    
+    .hero__dots {
+        bottom: 20px;
+        gap: 8px;
+    }
+    
+    .hero__dot {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .marquee {
+        height: auto;
+    }
+    
+    .marquee__text {
+        font-size: 28px;
+        line-height: 34px;
+        letter-spacing: 3%;
+    }
+}
+
+@media (max-width: 680px) {
+    .hero__content {
+        width: calc(100% - 30px);
+        max-width: 382px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        height: auto;
+    }
+    
+    .hero__content-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .hero__content-subtitle {
+        width: 100%;
+        max-width: 324px;
+        font-size: 16px;
+        line-height: 18px;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero__content {
+        width: calc(100% - 20px);
+        max-width: 320px;
+    }
+    
+    .hero__content-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero__content-subtitle {
+        max-width: 280px;
+        font-size: 14px;
+        line-height: 16px;
+    }
+    
+    .hero__dots {
+        bottom: 15px;
+        gap: 6px;
+    }
+    
+    .hero__dot {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .marquee {
+        height: auto;
+    }
+    
+    .marquee__text {
+        font-size: 24px;
+        line-height: 30px;
+        letter-spacing: 2%;
+    }
+}
+
+/* ====================================
+   NAVIGATION DOTS
+   ==================================== */
+.hero__dots {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 15;
+}
+
+.hero__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero__dot:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero__dot--active {
+    background-color: white;
+}
+
+.hero__dot:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+

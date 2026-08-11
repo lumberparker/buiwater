@@ -1,0 +1,67 @@
+/* ====================================
+   GOOGLE FONTS IMPORT
+   ==================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ====================================
+   RESET & BASE STYLES
+   ==================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ====================================
+   BODY & LAYOUT - NO HORIZONTAL SCROLL
+   ==================================== */
+html {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+        background-color: white; /* Optional background color */
+
+}
+
+body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100%;
+    margin-left: auto; /* Center the body */
+    margin-right: auto; /* Center the body */
+    padding-top: 100px; /* Compensate for fixed header */
+    background-color: #f6f4f5;
+    /* Allow smooth scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+    
+    /* Remove tap highlight but keep scrolling functional */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.page-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px; /* Add padding for mobile spacing */
+    box-sizing: border-box;
+}
+
+/* ====================================
+   MOBILE SCROLLING OPTIMIZATION
+   ==================================== */
+html, body {
+    /* Enable smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    
+    /* Allow touch actions for scrolling */
+    touch-action: pan-y;
+}
+
+/* Ensure main content areas allow scrolling */
+.hero,
+.marquee,
+.conoce,
+.propiedades,
+.presentaciones,
+.showcase,
+.footer {
+    /* Allow vertical scrolling */
+    touch-action: pan-y;
+}

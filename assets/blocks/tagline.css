@@ -1,0 +1,36 @@
+/* ====================================
+   TAGLINE SECTION (static "ERES LO QUE TOMAS" divider)
+   ==================================== */
+.tagline {
+    width: 100%;
+    background-color: #f6f4f5;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.tagline__text {
+    font-family: var(--font-josefin);
+    font-weight: 500;
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: #000000;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .tagline {
+        padding: 40px 20px;
+    }
+
+    .tagline__text {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tagline__text {
+        font-size: 22px;
+    }
+}

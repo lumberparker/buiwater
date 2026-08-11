@@ -1,0 +1,60 @@
+/* ====================================
+   GLOBAL TYPOGRAPHY
+   Titles → Poppins
+   Body / UI → Josefin Sans (same as header "Productos")
+   Loaded last so it overrides component font-family rules.
+   ==================================== */
+
+body {
+    font-family: var(--font-josefin);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #000000;
+}
+
+/* --- Titles --- */
+h1, h2, h3, h4, h5, h6,
+[class*="__title"],
+[class*="__heading"],
+.tagline__text,
+.kids-flavor__name,
+.hero__content-title,
+.footer__nav-heading,
+.presentaciones__item-title,
+.categorias__item-title {
+    font-family: var(--font-poppins);
+}
+
+/* --- Body / UI (menu-style Josefin) --- */
+p,
+a,
+button,
+li,
+label,
+input,
+textarea,
+span,
+.header__nav-link,
+.header__submenu-link,
+.categorias__item-subtitle,
+.hero__content-subtitle,
+.producto-presentacion__paragraph,
+.producto-presentacion__spec-label,
+.producto-presentacion__spec-value,
+.producto-tabs__tab,
+.footer__nav-link,
+.footer__privacy-link,
+.footer__copyright {
+    font-family: var(--font-josefin);
+}
+
+/* Handwritten note under product specs — not a title */
+.producto-presentacion__note {
+    font-family: "Segoe Script", "Brush Script MT", cursive;
+}
+
+/* Marquee keeps display style but uses body family unless designed otherwise */
+.marquee__text {
+    font-family: var(--font-josefin);
+}

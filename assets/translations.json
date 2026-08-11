@@ -1,0 +1,102 @@
+{
+  "es": {
+    "title": "BUI",
+    "nav": ["Nosotros", "Productos", "Contacto"],
+    "navProducts": ["Agua natural", "Agua gasificada", "Infusiones", "b'ui Kids"],
+    "slides": [
+      {
+        "title": "PURA, SILENCIOSA Y ESENCIAL",
+        "subtitle": "Ahora más cerca de ti. Ya disponible en Costco, Sam's y Walmart."
+      },
+      {
+        "title": "PUREZA NATURAL",
+        "subtitle": "Agua cristalina directamente de manantiales naturales, sin procesos químicos artificiales."
+      },
+      {
+        "title": "CALIDAD PREMIUM",
+        "subtitle": "Décadas de filtración natural garantizan la más alta calidad en cada gota."
+      },
+      {
+        "title": "EXPERIENCIA ÚNICA",
+        "subtitle": "Cada sorbo es una conexión directa con la naturaleza más pura y auténtica."
+      }
+    ],
+    "marquee": "ERES LO QUE TOMAS  |  ",
+    "conoce": {
+      "text": "No la alteramos, la embotellamos como la naturaleza la entrega.",
+      "button": "CONOCE MÁS SOBRE B'UI"
+    },
+    "propiedades": {
+      "title": "CON MÁS DE 10 PROPIEDADES MINERALES B'UI ES...",
+      "items": [
+        "Extraída de manantiales",
+        "Mineralizada de forma natural",
+        "En equilibrio perfecto con tu cuerpo"
+      ]
+    },
+    "presentaciones": {
+      "title": "Presentaciones",
+      "items": [
+        "Agua Natural",
+        "Agua Gasificada",
+        "Infusiones"
+      ]
+    },
+    "showcase": {
+      "title": "Pureza que se nota en cada gota."
+    },
+    "productos": {
+      "title": "NUESTROS PRODUCTOS"
+    }
+  },
+  "en": {
+    "title": "BUI",
+    "nav": ["About Us", "Products", "Contact"],
+    "navProducts": ["Natural water", "Sparkling water", "Infusions", "b'ui Kids"],
+    "slides": [
+      {
+        "title": "PURE, QUIET AND ESSENTIAL",
+        "subtitle": "Now closer to you. Already available at Costco, Sam's and Walmart."
+      },
+      {
+        "title": "NATURAL PURITY",
+        "subtitle": "Crystal clear water directly from natural springs, without artificial chemical processes."
+      },
+      {
+        "title": "PREMIUM QUALITY",
+        "subtitle": "Decades of natural filtration guarantee the highest quality in every drop."
+      },
+      {
+        "title": "UNIQUE EXPERIENCE",
+        "subtitle": "Every sip is a direct connection with the purest and most authentic nature."
+      }
+    ],
+    "marquee": "YOU ARE WHAT YOU DRINK  |  ",
+    "conoce": {
+      "text": "We don't alter it, we bottle it just as nature delivers it.",
+      "button": "LEARN MORE ABOUT B'UI"
+    },
+    "propiedades": {
+      "title": "WITH MORE THAN 10 MINERAL PROPERTIES B'UI IS...",
+      "items": [
+        "Extracted from springs",
+        "Naturally mineralized",
+        "In perfect balance with your body"
+      ]
+    },
+    "presentaciones": {
+      "title": "Presentations",
+      "items": [
+        "Natural Water",
+        "Sparkling Water",
+        "Infusions"
+      ]
+    },
+    "showcase": {
+      "title": "Purity you can notice in every drop."
+    },
+    "productos": {
+      "title": "OUR PRODUCTS"
+    }
+  }
+}
