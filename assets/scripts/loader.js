@@ -1,19 +1,19 @@
-// Page loader — home only; waits until loader video is almost finished
+// Page loader — home only; short, snappy, never blocks for many seconds
 (function () {
-    // Only run on home (index.html or site root)
     const path = (window.location.pathname || '').replace(/\/+$/, '');
     const file = path.split('/').pop() || '';
     const isHome = file === '' || file === 'index.html' || file === 'index.htm';
     if (!isHome) return;
     if (!document.getElementById('page-loader')) return;
 
-    const VIDEO_COMPLETE_RATIO = 0.92; // hide when ~92% played
-    const MAX_WAIT_MS = 20000;
-    const FALLBACK_MIN_MS = 2500;
+    // Cap how long the loader can stay — main cause of "forever to load"
+    const MAX_LOADER_MS = 4000;
+    const MIN_LOADER_MS = 1200;
+    // Prefer ending near the end of the video, but never past MAX
+    const VIDEO_COMPLETE_RATIO = 0.9;
 
-    let resourcesReady = false;
-    let videoAlmostDone = false;
     let dismissed = false;
+    let videoGateOpen = false;
     const startedAt = Date.now();
 
     document.body.classList.add('loading');
@@ -44,126 +44,82 @@
 
         setTimeout(() => {
             if (loader.parentNode) loader.parentNode.removeChild(loader);
-        }, 500);
+        }, 400);
     }
 
     function tryHide() {
-        if (dismissed) return;
-        // Wait for video nearly complete; resources can finish in parallel
-        if (!videoAlmostDone) return;
-        hideLoader();
+        if (dismissed || !videoGateOpen) return;
+        const elapsed = Date.now() - startedAt;
+        if (elapsed < MIN_LOADER_MS) {
+            setTimeout(hideLoader, MIN_LOADER_MS - elapsed);
+        } else {
+            hideLoader();
+        }
     }
 
-    function markVideoAlmostDone() {
-        if (videoAlmostDone) return;
-        videoAlmostDone = true;
+    function openVideoGate() {
+        if (videoGateOpen) return;
+        videoGateOpen = true;
         tryHide();
-    }
-
-    function markResourcesReady() {
-        resourcesReady = true;
-        // Resources no longer block dismiss; video progress does.
-        // Kept in case we want hybrid logic later.
-        void resourcesReady;
     }
 
     function setupLoaderVideo() {
         const video = document.querySelector('#page-loader .loader-video');
+
+        // Hard cap — never block longer than this
+        setTimeout(openVideoGate, MAX_LOADER_MS);
+
         if (!video) {
-            // No video: fall back to min time
-            setTimeout(markVideoAlmostDone, FALLBACK_MIN_MS);
+            setTimeout(openVideoGate, MIN_LOADER_MS);
             return;
         }
 
         video.muted = true;
         video.defaultMuted = true;
         video.playsInline = true;
-        // Play once through for the gate; don't loop while waiting
         video.loop = false;
         video.preload = 'auto';
 
-        let armed = false;
-
-        const armNearEnd = () => {
-            if (armed) return;
-            armed = true;
-
-            const onProgress = () => {
-                const d = video.duration;
-                if (!d || !isFinite(d) || d <= 0) return;
-                if (video.currentTime / d >= VIDEO_COMPLETE_RATIO) {
-                    video.removeEventListener('timeupdate', onProgress);
-                    markVideoAlmostDone();
-                }
-            };
-
-            video.addEventListener('timeupdate', onProgress);
-            video.addEventListener(
-                'ended',
-                () => {
-                    video.removeEventListener('timeupdate', onProgress);
-                    markVideoAlmostDone();
-                },
-                { once: true }
-            );
-
-            // If duration is known, also schedule a timer near the end as backup
-            const scheduleFromDuration = () => {
-                const d = video.duration;
-                if (!d || !isFinite(d) || d <= 0) return;
-                const ms = Math.max(0, d * VIDEO_COMPLETE_RATIO * 1000 - video.currentTime * 1000);
-                setTimeout(markVideoAlmostDone, ms + 50);
-            };
-
-            if (video.duration && isFinite(video.duration)) {
-                scheduleFromDuration();
-            } else {
-                video.addEventListener('loadedmetadata', scheduleFromDuration, { once: true });
+        const onNearEnd = () => {
+            const d = video.duration;
+            if (d && isFinite(d) && d > 0 && video.currentTime / d >= VIDEO_COMPLETE_RATIO) {
+                video.removeEventListener('timeupdate', onNearEnd);
+                openVideoGate();
             }
         };
 
-        const play = () => {
-            video.play().then(armNearEnd).catch(() => {
-                // Autoplay blocked — still arm listeners and use fallback timer
-                armNearEnd();
-                setTimeout(markVideoAlmostDone, FALLBACK_MIN_MS);
-            });
-        };
+        video.addEventListener('timeupdate', onNearEnd);
+        video.addEventListener('ended', openVideoGate, { once: true });
 
+        video.addEventListener(
+            'loadedmetadata',
+            () => {
+                const d = video.duration;
+                if (!d || !isFinite(d)) return;
+                // Schedule dismiss at 90% or MAX, whichever is sooner
+                const targetMs = Math.min(d * VIDEO_COMPLETE_RATIO * 1000, MAX_LOADER_MS);
+                setTimeout(openVideoGate, Math.max(0, targetMs));
+            },
+            { once: true }
+        );
+
+        const play = () => video.play().catch(() => openVideoGate());
         if (video.readyState >= 2) play();
         else {
             video.addEventListener('canplay', play, { once: true });
-            video.addEventListener('loadeddata', play, { once: true });
-            // Kick load
             try {
                 video.load();
             } catch (_) { /* ignore */ }
         }
     }
 
-    function checkResourcesLoaded() {
-        if (document.readyState === 'complete') {
-            markResourcesReady();
-            return;
-        }
-        window.addEventListener('load', markResourcesReady, { once: true });
-        setTimeout(markResourcesReady, MAX_WAIT_MS);
-    }
-
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             injectProgress();
             setupLoaderVideo();
-            checkResourcesLoaded();
         });
     } else {
         injectProgress();
         setupLoaderVideo();
-        checkResourcesLoaded();
     }
-
-    // Absolute safety net so the site never sticks on the loader
-    setTimeout(() => {
-        if (!dismissed) hideLoader();
-    }, MAX_WAIT_MS);
 })();

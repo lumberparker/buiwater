@@ -73,7 +73,7 @@
     background-color: #000000;
     transform: scaleX(0);
     transform-origin: left center;
-    animation: loader-fill-empty 1.6s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+    animation: loader-fill-empty 2.8s cubic-bezier(0.45, 0, 0.2, 1) forwards;
 }
 
 @keyframes loader-fill-empty {
