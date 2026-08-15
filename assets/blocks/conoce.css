@@ -35,6 +35,7 @@
 }
 
 .conoce__content_text-button {
+    display: inline-block;
     background-color: #000000;
     color: #ffffff;
     font-family: var(--font-josefin);
@@ -48,6 +49,12 @@
     padding: 16px 28px;
     cursor: pointer;
     border-radius: 0;
+    text-decoration: none;
+    text-align: center;
+}
+
+.conoce__content_text-button:hover {
+    color: #ffffff;
 }
 
 .conoce__content-image {

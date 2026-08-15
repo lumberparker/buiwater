@@ -1,52 +1,37 @@
 /* ====================================
    SCROLL REVEAL ENTRANCES
-   Elements enter from different directions as they hit the viewport.
+   Fade-only. An earlier version also slid each section in via
+   `transform: translate3d(...)`, triggered by IntersectionObserver as it
+   scrolled into view — the sudden position shift landing mid-gesture is
+   what made trackpad scrolling feel like it "bumped" and needed a second
+   push. Opacity has no layout/position effect, so it can't fight scroll
+   momentum the same way, regardless of exactly when it lands.
    ==================================== */
 
-/*
-  Slower entrances so motion is readable as you reach each section.
-*/
 .reveal {
     opacity: 0.12;
-    transition:
-        opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.6s ease-out;
     transition-delay: var(--reveal-delay, 0s);
 }
 
 /* Categorias cards: always fully visible on open (no scroll reveal) */
 
-/* Directions — enough travel to read, not so far it feels empty */
+/* All directions collapse to the same fade — kept as distinct classes
+   since reveal.js still assigns them per-section, but none of them move
+   the element anymore. */
 .reveal--up,
-.reveal--up-soft {
-    transform: translate3d(0, 40px, 0);
-}
-
-.reveal--down {
-    transform: translate3d(0, -32px, 0);
-}
-
-.reveal--left {
-    transform: translate3d(-48px, 0, 0);
-}
-
-.reveal--right {
-    transform: translate3d(48px, 0, 0);
-}
-
-.reveal--scale {
-    transform: scale(0.94);
-}
-
+.reveal--up-soft,
+.reveal--down,
+.reveal--left,
+.reveal--right,
+.reveal--scale,
 .reveal--fade {
     transform: none;
-    opacity: 0.15;
 }
 
 /* In view */
 .reveal.is-inview {
     opacity: 1;
-    transform: none;
 }
 
 /* Hero: play on load, not on scroll */

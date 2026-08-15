@@ -11,15 +11,6 @@
     margin-left: auto;
     margin-right: auto; /* Center the header */
     border-bottom: 1px solid transparent; /* Reserve space so layout doesn't jump */
-    /*
-      Force this onto its own compositor layer. Without it, some browsers
-      can visually desync a `position: fixed` element from its true
-      (correct) layout position during scroll — it paints a frame or two
-      behind, showing blank page above it until the next repaint settles.
-    */
-    transform: translateZ(0);
-    will-change: transform;
-    backface-visibility: hidden;
 }
 
 /*

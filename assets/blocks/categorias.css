@@ -106,6 +106,17 @@ a.categorias__item:hover {
     border-radius: 0;
     filter: none;
     transition: opacity 0.35s ease, transform 0.45s ease;
+}
+
+/*
+  will-change only while actually hovering. Applied permanently across all
+  8 elements (4 images + 4 videos) it forces 8 persistent GPU-composited
+  layers sitting right below the header — enough compositing overhead on
+  some machines to cause trackpad momentum scroll to hitch/reset near the
+  top of the page, exactly where these cards are.
+*/
+.categorias .presentaciones__media:hover .presentaciones__imagen,
+.categorias .presentaciones__media:hover .presentaciones__video {
     will-change: transform, opacity;
 }
 

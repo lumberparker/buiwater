@@ -54,22 +54,16 @@ class HeroCarousel {
             dot.addEventListener('click', () => this.goToSlide(index));
         });
         
-        // Start auto-sliding
+        // Start auto-sliding (no-ops when there's only one slide)
         this.startAutoSlide();
-        console.log('Auto-slide started');
-        
-        // Pause auto-slide on hover
-        const heroSection = document.querySelector('.hero');
-        if (heroSection) {
-            heroSection.addEventListener('mouseenter', () => {
-                console.log('Mouse entered hero - pausing auto-slide');
-                this.pauseAutoSlide();
-            });
-            heroSection.addEventListener('mouseleave', () => {
-                console.log('Mouse left hero - resuming auto-slide');
-                this.startAutoSlide();
-            });
-        }
+
+        // Pause-on-hover was wired to mouseenter/mouseleave on the hero
+        // section. Those fire not just from actual mouse movement but also
+        // whenever scrolling moves the page under a stationary cursor —
+        // crossing the hero's bottom edge while scrolling toggled these on
+        // every pass, which is what produced the "bump" needing a second
+        // scroll to push through. With one slide there's nothing to pause
+        // anyway, so this listens for nothing and adds nothing.
     }
     
     generateDots() {
@@ -130,11 +124,11 @@ class HeroCarousel {
     
     startAutoSlide() {
         this.pauseAutoSlide(); // Clear any existing interval
-        console.log('Starting auto-slide with 5 second intervals');
+        // Nothing to cycle to — don't run a timer forever for no reason.
+        if (this.slides.length <= 1) return;
         this.autoSlideInterval = setInterval(() => {
-            console.log('Auto-advancing to next slide');
             this.nextSlide();
-        }, 5000); // 5 seconds for testing
+        }, 5000);
     }
     
     pauseAutoSlide() {
