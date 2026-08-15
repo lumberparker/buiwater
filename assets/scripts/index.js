@@ -164,20 +164,14 @@ class LanguageManager {
         // Load translations first
         await this.loadTranslations();
         
-        // Initialize language switcher
+        // Initialize language switcher (hidden until translation is complete)
         this.initLanguageSwitcher();
         
-        try {
-            // First, try to detect location using a free IP geolocation service
-            const language = await this.detectLanguageByLocation();
-            this.setLanguage(language);
-            this.updateLanguageSwitcher(language);
-        } catch (error) {
-            console.log('Location detection failed, using browser language');
-            // Fallback to browser language detection
-            this.detectLanguageByBrowser();
-            this.updateLanguageSwitcher(this.currentLanguage);
-        }
+        // Always start in Spanish. English is only applied when the user
+        // explicitly chooses it on the switcher — never from IP/country/browser.
+        // Undefined/failed country detection → Spanish.
+        this.setLanguage('es');
+        this.updateLanguageSwitcher('es');
     }
     
     // Load translations from external JSON file
@@ -290,61 +284,38 @@ class LanguageManager {
         }
     }
     
+    // Kept for possible future use; always defaults to Spanish if country is missing/unknown.
+    // English is never returned automatically — only the switcher sets 'en'.
     async detectLanguageByLocation() {
-        try {
-            // Using a free IP geolocation service
-            const response = await fetch('https://ipapi.co/json/');
-            const data = await response.json();
-            
-            // Check if user is from Mexico or other Spanish-speaking countries
-            const spanishCountries = ['MX', 'ES', 'AR', 'CL', 'CO', 'PE', 'VE', 'EC', 'BO', 'PY', 'UY', 'CR', 'PA', 'GT', 'HN', 'SV', 'NI', 'DO', 'CU'];
-            const userCountry = data.country_code;
-            
-            console.log('Detected country:', userCountry);
-            
-            if (userCountry === 'US') {
-                return 'en';
-            } else if (spanishCountries.includes(userCountry)) {
-                return 'es';
-            } else {
-                // For other countries, use browser language as fallback
-                return this.getBrowserLanguage();
-            }
-        } catch (error) {
-            console.error('IP geolocation failed:', error);
-            // Try alternative service
-            try {
-                const response = await fetch('https://api.country.is/');
-                const data = await response.json();
-                const userCountry = data.country;
-                
-                console.log('Detected country (alternative):', userCountry);
-                
-                if (userCountry === 'US') {
-                    return 'en';
-                } else if (userCountry === 'MX') {
-                    return 'es';
-                } else {
-                    return this.getBrowserLanguage();
-                }
-            } catch (secondError) {
-                console.error('Alternative geolocation failed:', secondError);
-                throw new Error('All location detection methods failed');
-            }
-        }
+        return 'es';
     }
     
     detectLanguageByBrowser() {
-        const browserLang = this.getBrowserLanguage();
-        this.setLanguage(browserLang);
+        this.setLanguage('es');
     }
     
     getBrowserLanguage() {
-        const lang = navigator.language || navigator.languages[0];
-        return lang.startsWith('en') ? 'en' : 'es'; // Default to Spanish unless explicitly English
+        // Auto-detect never chooses English
+        return 'es';
     }
     
     setLanguage(language) {
+        // Guard: only allow English if the switcher is present (translation ready).
+        // Until then, force Spanish even if something asks for 'en'.
+        const switcher = document.querySelector('.header__language-switcher');
+        const switcherVisible =
+            switcher &&
+            window.getComputedStyle(switcher).display !== 'none' &&
+            window.getComputedStyle(switcher).visibility !== 'hidden';
+
+        if (language === 'en' && !switcherVisible) {
+            language = 'es';
+        }
+
+        if (language !== 'es' && language !== 'en') {
+            language = 'es';
+        }
+
         this.currentLanguage = language;
         this.updateContent();
         
