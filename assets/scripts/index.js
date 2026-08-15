@@ -562,7 +562,12 @@ function initPresentacionesVideos() {
         video.setAttribute('muted', '');
         video.setAttribute('playsinline', '');
         video.setAttribute('webkit-playsinline', '');
-        video.preload = 'auto';
+        // Deliberately NOT forcing preload='auto' here — these are below-
+        // the-fold hover videos. Setting 'auto' at setup time makes every
+        // browser fetch every video in full the instant the page loads,
+        // which is what made the home page feel slow to open. play() below
+        // already kicks off loading on demand the first time the user
+        // actually hovers, which is when the data is needed.
 
         let playToken = 0;
 

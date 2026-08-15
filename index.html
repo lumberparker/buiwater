@@ -36,7 +36,14 @@
     <meta property="twitter:description:en" content="B'UI natural spring water with minerals. Discover the purity of our natural water, rich in essential minerals.">
 
     <link rel="shortcut icon" href="./favicon.svg">
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://use.typekit.net/tpw2jyt.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="styles.css">
+    <!-- The loader video is the first thing the visitor sees and blocks the page — fetch it at max priority, in parallel with everything above. -->
+    <link rel="preload" href="assets/videos/bui-loader.mp4" as="video" type="video/mp4" fetchpriority="high">
 </head>
 <body>
     <!-- Loading Screen -->
@@ -98,7 +105,7 @@
         <div class="hero__carousel">
             <!-- Slide 1 -->
             <div class="hero__slide hero__slide--active">
-                <video class="hero__video" src="assets/videos/agua-bottles-water.mp4" autoplay muted loop playsinline></video>
+                <video class="hero__video" src="assets/videos/agua-bottles-water.mp4" autoplay muted loop playsinline preload="auto"></video>
                 <div class="hero__content">
                     <h1 class="hero__content-title">PURA, SILENCIOSA Y ESENCIAL</h1>
                     <p class="hero__content-subtitle">Ahora más cerca de ti. Ya disponible en Costco, Sam's y Walmart.</p>
@@ -128,7 +135,7 @@
             <a href="agua-natural.html" class="presentaciones__item categorias__item">
                 <div class="presentaciones__media categorias__media">
                     <img src="assets/images/agua-natural.jpg" alt="Agua Natural de Manantial" class="presentaciones__imagen" fetchpriority="high">
-                    <video class="presentaciones__video" muted loop playsinline webkit-playsinline preload="metadata">
+                    <video class="presentaciones__video" muted loop playsinline webkit-playsinline preload="none">
                         <source src="assets/videos/agua-natural-video.mp4" type="video/mp4">
                     </video>
                     <div class="categorias__overlay">
@@ -140,7 +147,7 @@
             <a href="agua-gasificada.html" class="presentaciones__item categorias__item">
                 <div class="presentaciones__media categorias__media">
                     <img src="assets/images/agua-gasificada.jpg" alt="Agua de Manantial Gasificada" class="presentaciones__imagen" fetchpriority="high">
-                    <video class="presentaciones__video" muted loop playsinline webkit-playsinline preload="metadata">
+                    <video class="presentaciones__video" muted loop playsinline webkit-playsinline preload="none">
                         <source src="assets/videos/agua-gasificada-video.mp4" type="video/mp4">
                     </video>
                     <div class="categorias__overlay">
@@ -152,7 +159,7 @@
             <a href="infusiones.html" class="presentaciones__item categorias__item">
                 <div class="presentaciones__media categorias__media">
                     <img src="assets/images/infusiones.jpg" alt="Agua de Manantial Gasificada Infusionada" class="presentaciones__imagen" fetchpriority="high">
-                    <video class="presentaciones__video" muted loop playsinline webkit-playsinline preload="metadata">
+                    <video class="presentaciones__video" muted loop playsinline webkit-playsinline preload="none">
                         <source src="assets/videos/infusiones-video.mp4" type="video/mp4">
                     </video>
                     <div class="categorias__overlay">
@@ -164,7 +171,7 @@
             <a href="kids.html" class="presentaciones__item categorias__item">
                 <div class="presentaciones__media categorias__media">
                     <img src="assets/images/agua-kids.jpg" alt="b'ui Kids" class="presentaciones__imagen" fetchpriority="high">
-                    <video class="presentaciones__video" muted loop playsinline webkit-playsinline preload="metadata">
+                    <video class="presentaciones__video" muted loop playsinline webkit-playsinline preload="none">
                         <source src="assets/videos/agua_kids-video.mp4" type="video/mp4">
                     </video>
                     <div class="categorias__overlay">
@@ -224,7 +231,7 @@
 
     <section class="showcase">
         <div class="showcase__container">
-            <video src="assets/videos/sobre-manifiesto-video.mp4" class="showcase__video" autoplay muted loop playsinline preload="metadata"></video>
+            <video src="assets/videos/sobre-manifiesto-video.mp4" class="showcase__video" autoplay muted loop playsinline preload="none"></video>
             <div class="showcase__overlay"></div>
             <div class="showcase__content">
                 <h2 class="showcase__title">Pureza que se nota en cada gota.</h2>

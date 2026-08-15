@@ -1,12 +1,11 @@
 /* ====================================
-   ADOBE FONTS IMPORT
+   Adobe Fonts (Typekit) and Google Fonts are loaded via <link> tags in
+   <head>, not @import here. @import inside a stylesheet is a hidden
+   network hop the browser can't discover until it has already fetched
+   and parsed this file — it delays first paint. <link> tags are visible
+   to the HTML preload scanner immediately, so they start in parallel
+   with everything else.
    ==================================== */
-@import url("https://use.typekit.net/tpw2jyt.css");
-
-/* ====================================
-   GOOGLE FONTS IMPORT
-   ==================================== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* ====================================
    FONT FAMILY DEFINITIONS
