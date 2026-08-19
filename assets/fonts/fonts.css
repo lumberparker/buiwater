@@ -11,7 +11,7 @@
    FONT FAMILY DEFINITIONS
    ==================================== */
 :root {
-    --font-itc: "itc-avant-garde-gothic-pro", sans-serif;
+    --font-itc: "Josefin Sans", sans-serif;
     --font-josefin: "Josefin Sans", sans-serif;
     --font-poppins: "Poppins", sans-serif;
 }

@@ -1,25 +1,74 @@
-// Page loader — home only; short, snappy, never blocks for many seconds
+// Home page loader. Plays the bottle clip, then gets out of the way.
+// Never blocks on other media. Always dismisses — even if the video stalls.
 (function () {
-    const path = (window.location.pathname || '').replace(/\/+$/, '');
-    const file = path.split('/').pop() || '';
-    const isHome = file === '' || file === 'index.html' || file === 'index.htm';
-    if (!isHome) return;
-    if (!document.getElementById('page-loader')) return;
+    const loader = document.getElementById('page-loader');
+    if (!loader) return;
 
-    // Cap how long the loader can stay — main cause of "forever to load"
     const MAX_LOADER_MS = 4000;
-    const MIN_LOADER_MS = 1200;
-    // Prefer ending near the end of the video, but never past MAX
-    const VIDEO_COMPLETE_RATIO = 0.9;
+    const MIN_LOADER_MS = 1100;
+    const SAFETY_MS = 5000;
 
     let dismissed = false;
-    let videoGateOpen = false;
     const startedAt = Date.now();
 
     document.body.classList.add('loading');
 
+    function competingVideos() {
+        return Array.from(document.querySelectorAll('video')).filter(
+            (v) => !v.classList.contains('loader-video')
+        );
+    }
+
+    function holdCompetingMedia() {
+        competingVideos().forEach((video) => {
+            video.dataset.buiLoaderHold = '1';
+            video.autoplay = false;
+            video.removeAttribute('autoplay');
+            // Stop in-flight fetches so the loader clip gets the pipe
+            if (video.preload !== 'none') video.preload = 'none';
+            try {
+                video.pause();
+            } catch (_) { /* ignore */ }
+        });
+    }
+
+    function releaseHero() {
+        const hero = document.querySelector('.hero__video');
+        if (!hero) return;
+        hero.muted = true;
+        hero.defaultMuted = true;
+        hero.loop = true;
+        hero.playsInline = true;
+        hero.preload = 'auto';
+        hero.play().catch(() => {});
+    }
+
+    function hideLoader() {
+        if (dismissed) return;
+        dismissed = true;
+
+        loader.classList.add('hidden');
+        document.body.classList.remove('loading');
+        releaseHero();
+        window.dispatchEvent(new Event('bui-loader-done'));
+
+        setTimeout(() => {
+            if (loader.parentNode) loader.parentNode.removeChild(loader);
+        }, 400);
+    }
+
+    function hideWhenReady() {
+        if (dismissed) return;
+        const elapsed = Date.now() - startedAt;
+        if (elapsed < MIN_LOADER_MS) {
+            setTimeout(hideLoader, MIN_LOADER_MS - elapsed);
+        } else {
+            hideLoader();
+        }
+    }
+
     function injectProgress() {
-        const content = document.querySelector('#page-loader .loader-content');
+        const content = loader.querySelector('.loader-content');
         if (!content || content.querySelector('.loader-progress')) return;
 
         const track = document.createElement('div');
@@ -29,48 +78,17 @@
         content.appendChild(track);
     }
 
-    function hideLoader() {
-        if (dismissed) return;
-        dismissed = true;
-
-        const loader = document.getElementById('page-loader');
-        if (!loader) {
-            document.body.classList.remove('loading');
-            return;
-        }
-
-        loader.classList.add('hidden');
-        document.body.classList.remove('loading');
-
-        setTimeout(() => {
-            if (loader.parentNode) loader.parentNode.removeChild(loader);
-        }, 400);
-    }
-
-    function tryHide() {
-        if (dismissed || !videoGateOpen) return;
-        const elapsed = Date.now() - startedAt;
-        if (elapsed < MIN_LOADER_MS) {
-            setTimeout(hideLoader, MIN_LOADER_MS - elapsed);
-        } else {
-            hideLoader();
-        }
-    }
-
-    function openVideoGate() {
-        if (videoGateOpen) return;
-        videoGateOpen = true;
-        tryHide();
-    }
-
     function setupLoaderVideo() {
-        const video = document.querySelector('#page-loader .loader-video');
+        holdCompetingMedia();
+        injectProgress();
 
-        // Hard cap — never block longer than this
-        setTimeout(openVideoGate, MAX_LOADER_MS);
+        // Soft cap (respects MIN) and a hard safety net that always dismisses
+        setTimeout(hideWhenReady, MAX_LOADER_MS);
+        setTimeout(hideLoader, SAFETY_MS);
 
+        const video = loader.querySelector('.loader-video');
         if (!video) {
-            setTimeout(openVideoGate, MIN_LOADER_MS);
+            setTimeout(hideWhenReady, MIN_LOADER_MS);
             return;
         }
 
@@ -78,48 +96,31 @@
         video.defaultMuted = true;
         video.playsInline = true;
         video.loop = false;
-        video.preload = 'auto';
+        // Do NOT call video.load() — it aborts the preload already in flight.
 
-        const onNearEnd = () => {
-            const d = video.duration;
-            if (d && isFinite(d) && d > 0 && video.currentTime / d >= VIDEO_COMPLETE_RATIO) {
-                video.removeEventListener('timeupdate', onNearEnd);
-                openVideoGate();
-            }
-        };
-
-        video.addEventListener('timeupdate', onNearEnd);
-        video.addEventListener('ended', openVideoGate, { once: true });
-
+        video.addEventListener('ended', hideWhenReady, { once: true });
+        video.addEventListener('error', hideWhenReady, { once: true });
         video.addEventListener(
-            'loadedmetadata',
+            'stalled',
             () => {
-                const d = video.duration;
-                if (!d || !isFinite(d)) return;
-                // Schedule dismiss at 90% or MAX, whichever is sooner
-                const targetMs = Math.min(d * VIDEO_COMPLETE_RATIO * 1000, MAX_LOADER_MS);
-                setTimeout(openVideoGate, Math.max(0, targetMs));
+                setTimeout(() => {
+                    if (!dismissed && video.readyState < 3) hideWhenReady();
+                }, 1200);
             },
             { once: true }
         );
 
-        const play = () => video.play().catch(() => openVideoGate());
-        if (video.readyState >= 2) play();
-        else {
-            video.addEventListener('canplay', play, { once: true });
-            try {
-                video.load();
-            } catch (_) { /* ignore */ }
-        }
+        const tryPlay = () => {
+            video.play().catch(hideWhenReady);
+        };
+
+        if (video.readyState >= 2) tryPlay();
+        else video.addEventListener('canplay', tryPlay, { once: true });
     }
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            injectProgress();
-            setupLoaderVideo();
-        });
+        document.addEventListener('DOMContentLoaded', setupLoaderVideo);
     } else {
-        injectProgress();
         setupLoaderVideo();
     }
 })();

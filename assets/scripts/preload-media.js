@@ -1,6 +1,7 @@
 /**
- * Gentle media warming — images only early; videos only when near the viewport.
- * Avoids saturating the network on first open (which made the home feel stuck).
+ * Warm images just ahead of the viewport. Play below-the-fold videos only
+ * when they are about to be seen. Waits for the home loader so we don't
+ * steal bandwidth from the bottle clip.
  */
 (function () {
     function absUrl(src) {
@@ -24,67 +25,55 @@
     }
     warmImage.cache = new Set();
 
-    function warmVideo(video) {
-        if (!video || video.dataset.warmed === '1') return Promise.resolve();
-        video.dataset.warmed = '1';
-
-        // Don't reset playing / already-buffered videos
-        if (video.readyState >= 2 || !video.paused) {
-            return Promise.resolve();
-        }
-
-        // Only ask for metadata/early frames — full file loads when playing
-        if (video.preload === 'none') {
-            video.preload = 'metadata';
-        }
-        video.muted = true;
-        return Promise.resolve();
-    }
-
-    function warmTree(root, { videos = false } = {}) {
+    function warmTree(root) {
         if (!root || root.nodeType !== 1) return Promise.resolve();
-
         const jobs = [];
-
         root.querySelectorAll('img').forEach((img) => {
             const src = img.currentSrc || img.getAttribute('src');
             if (src) jobs.push(warmImage(src));
         });
-
-        if (videos) {
-            root.querySelectorAll('video').forEach((video) => {
-                jobs.push(warmVideo(video));
-            });
-        }
-
         return Promise.all(jobs);
     }
 
-    window.buiWarmMedia = (root) => warmTree(root, { videos: true });
+    window.buiWarmMedia = (root) => warmTree(root);
+
+    function bindInViewPlayback() {
+        const videos = document.querySelectorAll('.showcase__video, .manifiesto__video');
+        if (!videos.length) return;
+
+        const io = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const video = entry.target;
+                    if (entry.isIntersecting) {
+                        video.muted = true;
+                        video.loop = true;
+                        video.playsInline = true;
+                        video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                    }
+                });
+            },
+            { rootMargin: '20% 0px', threshold: 0.15 }
+        );
+
+        videos.forEach((video) => io.observe(video));
+    }
 
     function start() {
-        // Images in categorias only (above the fold on home) — no bulk video download
         const categorias = document.querySelector('.categorias');
-        if (categorias) {
-            warmTree(categorias, { videos: false });
-        }
+        if (categorias) warmTree(categorias);
 
-        // Warm images (not full videos) a bit ahead of scroll
         const io = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (!entry.isIntersecting) return;
-                    // Videos only when closer; images further out
-                    const isClose = entry.intersectionRatio > 0 || true;
-                    warmTree(entry.target, { videos: isClose });
+                    warmTree(entry.target);
                     io.unobserve(entry.target);
                 });
             },
-            {
-                root: null,
-                rootMargin: '40% 0px',
-                threshold: 0
-            }
+            { root: null, rootMargin: '40% 0px', threshold: 0 }
         );
 
         document
@@ -92,13 +81,33 @@
                 '.conoce, .propiedades, .productos, .showcase, .encuentra, .producto-presentacion, .kids-flavors, .kids-pack, .footer'
             )
             .forEach((el) => io.observe(el));
+
+        bindInViewPlayback();
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', start);
-    } else {
-        start();
+    function whenPageReady(fn) {
+        let started = false;
+        const once = () => {
+            if (started) return;
+            started = true;
+            fn();
+        };
+        const run = () => {
+            if (document.body.classList.contains('loading')) {
+                window.addEventListener('bui-loader-done', once, { once: true });
+                setTimeout(once, 5500);
+            } else {
+                once();
+            }
+        };
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', run);
+        } else {
+            run();
+        }
     }
+
+    whenPageReady(start);
 
     window.addEventListener('load', () => {
         setTimeout(() => {

@@ -36,16 +36,27 @@
     <meta property="twitter:description:en" content="B'UI natural spring water with minerals. Discover the purity of our natural water, rich in essential minerals.">
 
     <link rel="shortcut icon" href="./favicon.svg">
-    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://use.typekit.net/tpw2jyt.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="styles.css">
-    <!-- The loader video is the first thing the visitor sees and blocks the page — fetch it at max priority, in parallel with everything above. -->
+    <!-- Loader clip is the first thing the visitor sees — fetch it at max priority. -->
     <link rel="preload" href="assets/videos/bui-loader.mp4" as="video" type="video/mp4" fetchpriority="high">
+    <style>
+        /* Critical loader paint — don't wait on the CSS @import chain */
+        .page-loader{position:fixed;top:0;left:0;width:100%;height:100%;background-color:#f9f7f3;display:flex;justify-content:center;align-items:center;z-index:9999;opacity:1}
+        .page-loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        body.loading{overflow:hidden}
+    </style>
+    <script src="assets/scripts/loader.js" defer></script>
+    <script src="assets/scripts/index.js" defer></script>
+    <script src="assets/scripts/preload-media.js" defer></script>
+    <script src="assets/scripts/reveal.js" defer></script>
+    <noscript>
+        <style>.page-loader{display:none!important}body.loading{overflow:visible}</style>
+    </noscript>
 </head>
-<body>
+<body class="loading">
     <!-- Loading Screen -->
     <div id="page-loader" class="page-loader">
         <div class="loader-content">
@@ -105,7 +116,7 @@
         <div class="hero__carousel">
             <!-- Slide 1 -->
             <div class="hero__slide hero__slide--active">
-                <video class="hero__video" src="assets/videos/agua-bottles-water.mp4" autoplay muted loop playsinline preload="auto"></video>
+                <video class="hero__video" src="assets/videos/agua-bottles-water.mp4" muted loop playsinline preload="none"></video>
                 <div class="hero__content">
                     <h1 class="hero__content-title">PURA, SILENCIOSA Y ESENCIAL</h1>
                     <p class="hero__content-subtitle">Ahora más cerca de ti. Ya disponible en Costco, Sam's y Walmart.</p>
@@ -134,7 +145,7 @@
         <div class="categorias__grid">
             <a href="agua-natural.html" class="presentaciones__item categorias__item">
                 <div class="presentaciones__media categorias__media">
-                    <img src="assets/images/agua-natural.jpg" alt="Agua Natural de Manantial" class="presentaciones__imagen" fetchpriority="high">
+                    <img src="assets/images/agua-natural.jpg" alt="Agua Natural de Manantial" class="presentaciones__imagen" decoding="async">
                     <video class="presentaciones__video" muted loop playsinline webkit-playsinline preload="none">
                         <source src="assets/videos/agua-natural-video.mp4" type="video/mp4">
                     </video>
@@ -146,7 +157,7 @@
             </a>
             <a href="agua-gasificada.html" class="presentaciones__item categorias__item">
                 <div class="presentaciones__media categorias__media">
-                    <img src="assets/images/agua-gasificada.jpg" alt="Agua de Manantial Gasificada" class="presentaciones__imagen" fetchpriority="high">
+                    <img src="assets/images/agua-gasificada.jpg" alt="Agua de Manantial Gasificada" class="presentaciones__imagen" decoding="async">
                     <video class="presentaciones__video" muted loop playsinline webkit-playsinline preload="none">
                         <source src="assets/videos/agua-gasificada-video.mp4" type="video/mp4">
                     </video>
@@ -158,7 +169,7 @@
             </a>
             <a href="infusiones.html" class="presentaciones__item categorias__item">
                 <div class="presentaciones__media categorias__media">
-                    <img src="assets/images/infusiones.jpg" alt="Agua de Manantial Gasificada Infusionada" class="presentaciones__imagen" fetchpriority="high">
+                    <img src="assets/images/infusiones.jpg" alt="Agua de Manantial Gasificada Infusionada" class="presentaciones__imagen" decoding="async">
                     <video class="presentaciones__video" muted loop playsinline webkit-playsinline preload="none">
                         <source src="assets/videos/infusiones-video.mp4" type="video/mp4">
                     </video>
@@ -170,7 +181,7 @@
             </a>
             <a href="kids.html" class="presentaciones__item categorias__item">
                 <div class="presentaciones__media categorias__media">
-                    <img src="assets/images/agua-kids.jpg" alt="b'ui Kids" class="presentaciones__imagen" fetchpriority="high">
+                    <img src="assets/images/agua-kids.jpg" alt="b'ui Kids" class="presentaciones__imagen" decoding="async">
                     <video class="presentaciones__video" muted loop playsinline webkit-playsinline preload="none">
                         <source src="assets/videos/agua_kids-video.mp4" type="video/mp4">
                     </video>
@@ -189,13 +200,13 @@
                 <p class="conoce__content_text-main">No la alteramos, la embotellamos como la naturaleza la entrega.</p>
                 <a href="sobre-bui.html" class="conoce__content_text-button">CONOCE MÁS SOBRE B'UI</a>
             </div>
-            <img src="assets/images/round_image.jpeg" alt="Imagen redonda de cascada y agua de mantantial" class="conoce__content-image">
+            <img src="assets/images/round_image.jpeg" alt="Imagen redonda de cascada y agua de mantantial" class="conoce__content-image" loading="lazy" decoding="async">
         </div>
     </section>
 
     <section class="propiedades">
         <div class="propiedades__image-wrap">
-            <img src="assets/images/botella_minerales.jpg" alt="Botella B'ui con propiedades minerales NO3, Ca, K, Mg, Na" class="propiedades__imagen">
+            <img src="assets/images/botella_minerales.jpg" alt="Botella B'ui con propiedades minerales NO3, Ca, K, Mg, Na" class="propiedades__imagen" loading="lazy" decoding="async">
         </div>
         <div class="propiedades__content">
             <h2 class="propiedades__content_title">CON MÁS DE 10 PROPIEDADES MINERALES...</h2>
@@ -231,7 +242,7 @@
 
     <section class="showcase">
         <div class="showcase__container">
-            <video src="assets/videos/sobre-manifiesto-video.mp4" class="showcase__video" autoplay muted loop playsinline preload="none"></video>
+            <video src="assets/videos/sobre-manifiesto-video.mp4" class="showcase__video" muted loop playsinline preload="none"></video>
             <div class="showcase__overlay"></div>
             <div class="showcase__content">
                 <h2 class="showcase__title">Pureza que se nota en cada gota.</h2>
@@ -322,7 +333,7 @@
     <footer class="footer">
         <div class="footer__grid">
             <div class="footer__bottle">
-                <img src="assets/images/botella.png" alt="BUI Water Bottle" class="footer__bottle-image">
+                <img src="assets/images/botella.png" alt="BUI Water Bottle" class="footer__bottle-image" loading="lazy" decoding="async">
             </div>
 
             <div class="footer__nav-container">
@@ -346,10 +357,10 @@
 
             <div class="footer__gallery-container">
                 <div class="footer__gallery">
-                    <img src="assets/images/asi.png" alt="Logotipo ASI" class="footer__gallery-image">
-                    <img src="assets/images/fda.png" alt="Logotipo FDA" class="footer__gallery-image">
-                    <img src="assets/images/fsc.png" alt="Logotipo FSC" class="footer__gallery-image">
-                    <img src="assets/images/fws.png" alt="Logotipo fws" class="footer__gallery-image">
+                    <img src="assets/images/asi.png" alt="Logotipo ASI" class="footer__gallery-image" loading="lazy" decoding="async">
+                    <img src="assets/images/fda.png" alt="Logotipo FDA" class="footer__gallery-image" loading="lazy" decoding="async">
+                    <img src="assets/images/fsc.png" alt="Logotipo FSC" class="footer__gallery-image" loading="lazy" decoding="async">
+                    <img src="assets/images/fws.png" alt="Logotipo fws" class="footer__gallery-image" loading="lazy" decoding="async">
                 </div>
             </div>
 
@@ -372,9 +383,5 @@
         </div>
     </footer>
 
-<script src="assets/scripts/loader.js"></script>
-<script src="assets/scripts/index.js"></script>
-<script src="assets/scripts/preload-media.js"></script>
-<script src="assets/scripts/reveal.js"></script>
 </body>
 </html>

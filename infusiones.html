@@ -9,12 +9,13 @@
     <meta name="author" content="Rodney Parker">
 
     <link rel="shortcut icon" href="./favicon.svg">
-    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://use.typekit.net/tpw2jyt.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="styles.css">
+    <script src="assets/scripts/index.js" defer></script>
+    <script src="assets/scripts/preload-media.js" defer></script>
+    <script src="assets/scripts/reveal.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -64,7 +65,7 @@
 
     <section class="producto-hero producto-hero--equal">
         <div class="producto-hero__panel">
-            <img id="infusionHeroLeft" src="assets/images/infusiones-pepino-hero-1.png" alt="Botella b'ui infusión pepino" class="producto-hero__image">
+            <img id="infusionHeroLeft" src="assets/images/infusiones-pepino-hero-1.png" alt="Botella b'ui infusión pepino" class="producto-hero__image" fetchpriority="high" decoding="async">
         </div>
         <div class="producto-hero__panel producto-hero__panel--right">
             <img id="infusionHeroRight" src="assets/images/infusiones-pepino-hero-2.png" alt="Hojas de menta sobre agua" class="producto-hero__image">
@@ -294,8 +295,5 @@
         </div>
     </footer>
 
-<script src="assets/scripts/index.js"></script>
-<script src="assets/scripts/preload-media.js"></script>
-<script src="assets/scripts/reveal.js"></script>
 </body>
 </html>

@@ -9,12 +9,13 @@
     <meta name="author" content="Rodney Parker">
 
     <link rel="shortcut icon" href="./favicon.svg">
-    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://use.typekit.net/tpw2jyt.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="styles.css">
+    <script src="assets/scripts/index.js" defer></script>
+    <script src="assets/scripts/preload-media.js" defer></script>
+    <script src="assets/scripts/reveal.js" defer></script>
 </head>
 <body data-product="kids">
     <header class="header">
@@ -63,7 +64,7 @@
     </header>
 
     <section class="kids-hero">
-        <img src="assets/images/hero_bui_kids.png" alt="Niño con cartones b'ui kids" class="kids-hero__image">
+        <img src="assets/images/hero_bui_kids.jpg" alt="Niño con cartones b'ui kids" class="kids-hero__image" fetchpriority="high" decoding="async">
     </section>
 
     <section class="kids-intro">
@@ -78,7 +79,7 @@
         <article class="kids-flavor">
             <div class="kids-flavor__media">
                 <div class="kids-flavor__circle" style="background-color:#f0c94d;" aria-hidden="true"></div>
-                <img src="assets/images/bui_mango.png" alt="b'ui kids mango" class="kids-flavor__image">
+                <img src="assets/images/bui_mango.png" alt="b'ui kids mango" class="kids-flavor__image" loading="lazy" decoding="async">
             </div>
             <h2 class="kids-flavor__name kids-flavor__name--mango">Mango</h2>
             <p class="kids-flavor__size">330ml</p>
@@ -86,7 +87,7 @@
         <article class="kids-flavor">
             <div class="kids-flavor__media">
                 <div class="kids-flavor__circle" style="background-color:#e05a4f;" aria-hidden="true"></div>
-                <img src="assets/images/bui_manzana.png" alt="b'ui kids manzana" class="kids-flavor__image">
+                <img src="assets/images/bui_manzana.png" alt="b'ui kids manzana" class="kids-flavor__image" loading="lazy" decoding="async">
             </div>
             <h2 class="kids-flavor__name kids-flavor__name--manzana">Manzana</h2>
             <p class="kids-flavor__size">330ml</p>
@@ -94,7 +95,7 @@
         <article class="kids-flavor">
             <div class="kids-flavor__media">
                 <div class="kids-flavor__circle" style="background-color:#e89a3c;" aria-hidden="true"></div>
-                <img src="assets/images/bui_naranja.png" alt="b'ui kids naranja" class="kids-flavor__image">
+                <img src="assets/images/bui_naranja.png" alt="b'ui kids naranja" class="kids-flavor__image" loading="lazy" decoding="async">
             </div>
             <h2 class="kids-flavor__name kids-flavor__name--naranja">Naranja</h2>
             <p class="kids-flavor__size">330ml</p>
@@ -107,7 +108,7 @@
             <p class="kids-pack__text">Pack de 12 con sabores mango, manzana y naranja</p>
         </div>
         <div class="kids-pack__media">
-            <img src="assets/images/bui_kids_caja.png" alt="Caja pack de 12 b'ui kids" class="kids-pack__caja">
+            <img src="assets/images/bui_kids_caja.png" alt="Caja pack de 12 b'ui kids" class="kids-pack__caja" loading="lazy" decoding="async">
             <div class="kids-pack__flavors" aria-hidden="true">
                 <img src="assets/images/bui_mango.png" alt="" class="kids-pack__carton kids-pack__carton--mango">
                 <img src="assets/images/bui_manzana.png" alt="" class="kids-pack__carton kids-pack__carton--manzana">
@@ -189,8 +190,5 @@
         </div>
     </footer>
 
-<script src="assets/scripts/index.js"></script>
-<script src="assets/scripts/preload-media.js"></script>
-<script src="assets/scripts/reveal.js"></script>
 </body>
 </html>

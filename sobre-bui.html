@@ -9,12 +9,13 @@
     <meta name="author" content="Rodney Parker">
 
     <link rel="shortcut icon" href="./favicon.svg">
-    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://use.typekit.net/tpw2jyt.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="styles.css">
+    <script src="assets/scripts/index.js" defer></script>
+    <script src="assets/scripts/preload-media.js" defer></script>
+    <script src="assets/scripts/reveal.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -63,7 +64,7 @@
     </header>
 
     <section class="sobre-hero">
-        <img src="assets/images/sobre-hero.png" alt="Manos sosteniendo botellas b'ui" class="sobre-hero__image">
+        <img src="assets/images/sobre-hero.png" alt="Manos sosteniendo botellas b'ui" class="sobre-hero__image" fetchpriority="high" decoding="async">
         <div class="sobre-hero__bubble">
             <p class="sobre-hero__bubble-text">b'ui es un producto sustentable, 100% Mexicano y comprometido con la diversidad e inclusión. Fundado en 2009 por Estefania Sidaoui y compuesto por 80% mujeres.</p>
         </div>
@@ -76,14 +77,14 @@
                 <p class="origen__paragraph">Fundada en 2009 por Estefania Sidaoui, b'ui es un producto sustentable 100% mexicano. b'ui nace de la idea de que hidratarse puede ser un acto consciente. Más que agua, representa una forma de vivir: equilibrada, estética y presente.</p>
                 <p class="origen__paragraph">Extraída de manantiales naturales y embotellada en vidrio, b'ui conserva la pureza y propiedades que la naturaleza entrega desde el origen. Su composición neutra y delicada le permite integrarse con armonía a experiencias gastronómicas, rituales cotidianos y momentos de bienestar.</p>
             </div>
-            <img src="assets/images/sobre-origen.png" alt="Botella b'ui en manantial" class="origen__image">
+            <img src="assets/images/sobre-origen.png" alt="Botella b'ui en manantial" class="origen__image" loading="lazy" decoding="async">
         </div>
     </section>
 
     <section class="notas">
         <div class="notas__row">
-            <img src="assets/images/sobre-waterfall.png" alt="Cascada natural" class="notas__photo">
-            <img src="assets/images/sobre-bottle-carton.png" alt="Botella b'ui tetra pak" class="notas__photo">
+            <img src="assets/images/sobre-waterfall.png" alt="Cascada natural" class="notas__photo" loading="lazy" decoding="async">
+            <img src="assets/images/sobre-bottle-carton.png" alt="Botella b'ui tetra pak" class="notas__photo" loading="lazy" decoding="async">
             <div class="notas__text">
                 <p>Nuestra agua es muy brillante, cristalina y poco densa con un olor a mineral muy suave y otros aromas casi imperceptible.</p>
                 <p>Posee una entrada equilibrada, amable, con notas dulces muy suaves, nivel de salinidad muy bajo, prácticamente inexistente, acidez suave y una ligera nota amable y elegante, aunque de corta duración.</p>
@@ -109,14 +110,14 @@
                 </ul>
             </div>
             <div class="componentes__image-wrap">
-                <img src="assets/images/sobre-bottle-plain.png" alt="Botella b'ui" class="componentes__image">
+                <img src="assets/images/sobre-bottle-plain.png" alt="Botella b'ui" class="componentes__image" loading="lazy" decoding="async">
             </div>
         </div>
     </section>
 
     <section class="manifiesto">
         <div class="manifiesto__container">
-            <video src="assets/videos/sobre-manifiesto-video.mp4" class="manifiesto__video" autoplay muted loop playsinline preload="none"></video>
+            <video src="assets/videos/sobre-manifiesto-video.mp4" class="manifiesto__video" muted loop playsinline preload="none"></video>
             <div class="manifiesto__overlay"></div>
             <div class="manifiesto__content">
                 <h2 class="manifiesto__title">Manifiesto</h2>
@@ -246,8 +247,5 @@
         </div>
     </footer>
 
-<script src="assets/scripts/index.js"></script>
-<script src="assets/scripts/preload-media.js"></script>
-<script src="assets/scripts/reveal.js"></script>
 </body>
 </html>

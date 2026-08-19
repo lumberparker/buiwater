@@ -9,12 +9,14 @@
     <meta name="author" content="Rodney Parker">
 
     <link rel="shortcut icon" href="./favicon.svg">
-    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://use.typekit.net/tpw2jyt.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="styles.css">
+    <script src="assets/scripts/index.js" defer></script>
+    <script src="assets/scripts/preload-media.js" defer></script>
+    <script src="assets/scripts/reveal.js" defer></script>
+    <script src="assets/scripts/product-page.js" defer></script>
 </head>
 <body data-product="agua-natural">
     <header class="header">
@@ -68,6 +70,8 @@
                 src="assets/images/agua-natural-hero-1.png"
                 alt="Botellas b'ui agua natural sobre mármol"
                 class="producto-hero__image"
+                fetchpriority="high"
+                decoding="async"
             >
         </div>
         <div class="producto-hero__panel producto-hero__panel--right">
@@ -254,9 +258,5 @@
         </div>
     </footer>
 
-<script src="assets/scripts/index.js"></script>
-<script src="assets/scripts/preload-media.js"></script>
-<script src="assets/scripts/reveal.js"></script>
-<script src="assets/scripts/product-page.js"></script>
 </body>
 </html>

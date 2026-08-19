@@ -5,6 +5,7 @@
     margin: 0 auto 14px; /* was 56px; 25% of previous gap above marquee */
     height: 622px; /* Specific height to match video proportion */
     overflow: hidden;
+    background-color: #d8e6ee; /* visible while the hero video starts after the loader */
 }
 
 .hero__carousel {

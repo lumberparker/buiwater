@@ -599,8 +599,7 @@ class VideoAutoplayManager {
     init() {
         this.checkScreenSize();
         this.forceVideoAutoplay();
-        
-        // Listen for window resize
+        window.addEventListener('bui-loader-done', () => this.forceVideoAutoplay());
         window.addEventListener('resize', () => {
             this.checkScreenSize();
             this.forceVideoAutoplay();
@@ -613,22 +612,10 @@ class VideoAutoplayManager {
     
     forceVideoAutoplay() {
         if (!this.isSmallScreen) return;
-        
-        // Force autoplay for hero videos
-        const heroVideos = document.querySelectorAll('.hero__video');
-        heroVideos.forEach(video => {
-            this.enforceVideoAttributes(video);
-        });
-        
-        // Force autoplay for showcase video
-        const showcaseVideo = document.querySelector('.showcase__video');
-        if (showcaseVideo) {
-            this.enforceVideoAttributes(showcaseVideo);
-        }
-        
-        // Force autoplay for presentaciones videos
-        const presentacionesVideos = document.querySelectorAll('.presentaciones__video');
-        presentacionesVideos.forEach(video => {
+        // Don't fight the home loader or start below-fold / hover videos.
+        if (document.body.classList.contains('loading')) return;
+
+        document.querySelectorAll('.hero__video').forEach((video) => {
             this.enforceVideoAttributes(video);
         });
     }
@@ -1069,7 +1056,7 @@ class ProductsGrid {
         card.innerHTML = `
             <div class="productos__card-image-container">
                 <div class="productos__card-image-circle" style="background-color: ${circleColor};"></div>
-                <img src="${product.image}" alt="${product.title}" class="productos__card-image" loading="eager" decoding="async">
+                <img src="${product.image}" alt="${product.title}" class="productos__card-image" loading="lazy" decoding="async">
             </div>
             <h3 class="productos__card-title">${product.title}</h3>
             <div class="productos__card-sizes">
