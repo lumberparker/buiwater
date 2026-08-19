@@ -97,41 +97,78 @@
     }
 }
 
+/*
+  Mobile: stop overlaying the text card on top of the video. At narrow
+  widths the video's own height (locked to the 1291:622 ratio) shrinks to
+  ~180px, while the text card was a fixed 382px-wide box designed for the
+  desktop banner — it no longer fit, forcing the title/subtitle to spill
+  off the right edge and get clipped. Instead, stack the two: video on
+  top as its own short banner, text below as a normal full-width block
+  reading left-to-right (horizontal), not centered/overlapping/clipped.
+*/
 @media (max-width: 768px) {
+    .hero {
+        height: auto;
+    }
+
+    .hero__carousel {
+        height: auto;
+    }
+
+    .hero__slide {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        opacity: 1;
+    }
+
+    .hero__video {
+        position: static;
+        width: 100%;
+        height: 260px;
+    }
+
     .hero__content {
-        width: calc(100% - 40px); /* Responsive width */
-        max-width: 382px; /* Don't exceed original width */
-        left: 20px;
-        height: auto; /* Allow height to adjust based on content */
-        padding: 10px;
+        position: static;
+        width: 100%;
+        max-width: none;
+        left: auto;
+        top: auto;
+        transform: none;
+        text-align: left;
+        padding: 24px 20px;
     }
-    
+
     .hero__content-title {
-        font-size: 2.5rem;
-        line-height: 1.2; /* Better line height for mobile */
+        font-size: 2rem;
+        line-height: 1.2;
+        text-align: left;
     }
-    
+
     .hero__content-subtitle {
-        width: calc(100% - 40px);
-        max-width: 324px;
-        font-size: 18px;
-        line-height: 20px;
+        width: 100%;
+        max-width: none;
+        font-size: 16px;
+        line-height: 22px;
+        text-align: left;
+        margin: 0;
     }
-    
+
+    /* Single slide today — a lone dot floating under the stacked content
+       has no navigation value and nowhere sensible to sit.
+       !important: the unconditional `.hero__dots { display: flex }` rule
+       in the NAVIGATION DOTS section below is equal specificity and comes
+       later in the file, so it wins by source order without this. */
     .hero__dots {
-        bottom: 20px;
-        gap: 8px;
+        display: none !important;
     }
-    
-    .hero__dot {
-        width: 10px;
-        height: 10px;
-    }
-    
+
     .marquee {
         height: auto;
     }
-    
+
     .marquee__text {
         font-size: 28px;
         line-height: 34px;
@@ -139,62 +176,28 @@
     }
 }
 
-@media (max-width: 680px) {
-    .hero__content {
-        width: calc(100% - 30px);
-        max-width: 382px;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        height: auto;
-    }
-    
-    .hero__content-title {
-        font-size: 2rem;
-        text-align: center;
-    }
-    
-    .hero__content-subtitle {
-        width: 100%;
-        max-width: 324px;
-        font-size: 16px;
-        line-height: 18px;
-        text-align: center;
-        margin: 0 auto;
-    }
-}
-
 @media (max-width: 480px) {
+    .hero__video {
+        height: 220px;
+    }
+
     .hero__content {
-        width: calc(100% - 20px);
-        max-width: 320px;
+        padding: 20px 16px;
     }
-    
+
     .hero__content-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
-    
+
     .hero__content-subtitle {
-        max-width: 280px;
         font-size: 14px;
-        line-height: 16px;
+        line-height: 19px;
     }
-    
-    .hero__dots {
-        bottom: 15px;
-        gap: 6px;
-    }
-    
-    .hero__dot {
-        width: 8px;
-        height: 8px;
-    }
-    
+
     .marquee {
         height: auto;
     }
-    
+
     .marquee__text {
         font-size: 24px;
         line-height: 30px;
