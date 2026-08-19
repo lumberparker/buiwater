@@ -1104,18 +1104,32 @@ class ProductsGrid {
 // aspect-ratio alone can leave the panel edge at a fractional coordinate
 // (e.g. 856.3125px), which makes a 1px border/pseudo-element anti-alias
 // across ~2 device pixels and look thicker than the frame around it.
+//
+// On small screens the hero stacks vertically — leave sizing to CSS
+// (and clear any leftover inline widths from a previous desktop snap).
+const PRODUCT_HERO_STACK_MQ = window.matchMedia('(max-width: 640px)');
+
 function snapProductoHeroDivider() {
     const heroes = document.querySelectorAll('.producto-hero');
+    const stacked = PRODUCT_HERO_STACK_MQ.matches;
+
     heroes.forEach((hero) => {
         const right = hero.querySelector('.producto-hero__panel--right');
         if (!right) return;
+
+        if (stacked) {
+            hero.style.removeProperty('grid-template-columns');
+            right.style.removeProperty('width');
+            right.style.removeProperty('flex');
+            return;
+        }
+
         const isEqual = hero.classList.contains('producto-hero--equal');
         const heroHeight = hero.clientHeight;
         const heroWidth = hero.clientWidth;
+        if (!heroHeight || !heroWidth) return;
 
         if (isEqual) {
-            // Grid: set explicit whole-pixel columns so the boundary
-            // (and the divider sitting on it) is never fractional.
             const leftPx = Math.round(heroWidth / 2);
             const rightPx = heroWidth - leftPx;
             hero.style.gridTemplateColumns = leftPx + 'px ' + rightPx + 'px';
@@ -1131,6 +1145,12 @@ window.addEventListener('resize', () => {
     clearTimeout(window._snapHeroTimer);
     window._snapHeroTimer = setTimeout(snapProductoHeroDivider, 100);
 });
+
+if (typeof PRODUCT_HERO_STACK_MQ.addEventListener === 'function') {
+    PRODUCT_HERO_STACK_MQ.addEventListener('change', snapProductoHeroDivider);
+} else if (typeof PRODUCT_HERO_STACK_MQ.addListener === 'function') {
+    PRODUCT_HERO_STACK_MQ.addListener(snapProductoHeroDivider);
+}
 
 // Distributor registration slide-over panel
 function initDistribuidorPanel() {

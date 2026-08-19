@@ -63,7 +63,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 0px;
+    width: 1px;
     height: 100%;
     background-color: #000000;
     z-index: 2;
@@ -384,6 +384,12 @@
    RESPONSIVE DESIGN
    ==================================== */
 @media (max-width: 900px) {
+    /* Keep the split, but give both photos enough height so they
+       aren't a thin cropped strip on tablets. */
+    .producto-hero {
+        height: min(50vw, 380px);
+    }
+
     .producto-presentacion {
         flex-direction: column;
         text-align: center;
@@ -407,10 +413,6 @@
 }
 
 @media (max-width: 768px) {
-    .producto-hero {
-        height: min(48vw, 320px);
-    }
-
     .producto-titlebar {
         padding: 20px;
     }
@@ -446,39 +448,53 @@
     }
 }
 
-@media (max-width: 480px) {
-    .producto-hero {
-        flex-direction: column;
-        gap: 0;
-        height: auto;
-    }
-
+/*
+  Phones: stack the two hero photos full-width.
+  Each panel is a 3:2 crop (cover) so bottles and lifestyle shots fill
+  the frame instead of letterboxing or collapsing into a sliver.
+*/
+@media (max-width: 640px) {
+    .producto-hero,
     .producto-hero--equal {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0;
+        display: flex;
+        flex-direction: column;
         height: auto;
+        min-height: 0;
+        grid-template-columns: none;
     }
 
-    .producto-hero__panel:first-child {
-        width: 100%;
-        height: auto;
-        min-height: 200px;
-        aspect-ratio: 740 / 534;
-    }
-
-    .producto-hero__panel--right {
-        width: 100%;
-        height: auto;
-        min-height: 200px;
-        aspect-ratio: 540 / 534;
-        border: 0;
-    }
-
+    .producto-hero__panel,
+    .producto-hero__panel:first-child,
+    .producto-hero__panel--right,
+    .producto-hero--equal .producto-hero__panel,
     .producto-hero--equal .producto-hero__panel:first-child,
     .producto-hero--equal .producto-hero__panel--right {
-        aspect-ratio: auto;
-        height: 52vw;
-        min-height: 200px;
+        position: relative;
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 3 / 2;
+        background-color: #f6f4f5;
+    }
+
+    .producto-hero__image,
+    .producto-hero__panel--right .producto-hero__image,
+    .producto-hero--equal .producto-hero__panel--right .producto-hero__image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    /* Horizontal rule between stacked photos */
+    .producto-hero__panel--right::before {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
     }
 }
