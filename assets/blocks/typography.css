@@ -1,12 +1,13 @@
 /* ====================================
    GLOBAL TYPOGRAPHY
-   Titles → Poppins
-   Body / UI → Josefin Sans (same as header "Productos")
+   Titles → Poppins Bold
+   Buttons → Poppins Bold
+   Everything else → Satoshi
    Loaded last so it overrides component font-family rules.
    ==================================== */
 
 body {
-    font-family: var(--font-josefin);
+    font-family: var(--font-satoshi);
     font-weight: 400;
     font-size: 16px;
     line-height: 1.2;
@@ -24,9 +25,10 @@ h1, h2, h3, h4, h5, h6,
 .presentaciones__item-title,
 .categorias__item-title {
     font-family: var(--font-poppins);
+    font-weight: 700;
 }
 
-/* --- Body / UI (menu-style Josefin) --- */
+/* --- Body / UI (everything else) --- */
 p,
 a,
 button,
@@ -42,11 +44,22 @@ span,
 .producto-presentacion__paragraph,
 .producto-presentacion__spec-label,
 .producto-presentacion__spec-value,
-.producto-tabs__tab,
 .footer__nav-link,
 .footer__privacy-link,
 .footer__copyright {
-    font-family: var(--font-josefin);
+    font-family: var(--font-satoshi);
+}
+
+/* --- Buttons → Poppins Bold --- */
+.conoce__content_text-button,
+.distribuidor__button,
+.producto-cta-button,
+.productos__cta-button,
+.sobre-distribuidor__submit,
+.producto-tabs__tab,
+.faq__question {
+    font-family: var(--font-poppins);
+    font-weight: 700;
 }
 
 /* Handwritten note under product specs — not a title */
@@ -56,5 +69,5 @@ span,
 
 /* Marquee keeps display style but uses body family unless designed otherwise */
 .marquee__text {
-    font-family: var(--font-josefin);
+    font-family: var(--font-satoshi);
 }

@@ -568,6 +568,12 @@ function initPresentacionesVideos() {
                     attempt();
                 };
                 video.addEventListener('canplay', onReady);
+                // Safari (preload="none") never starts buffering a video
+                // that hasn't been explicitly loaded — calling play() alone
+                // is a silent no-op there the first time. load() primes it.
+                if (video.networkState === HTMLMediaElement.NETWORK_EMPTY) {
+                    video.load();
+                }
                 // Kick loading without full reset if possible
                 try {
                     video.play().catch(() => {});
@@ -1155,6 +1161,53 @@ class ProductsGrid {
     }
 }
 
+// Retailer logos ("Nos puedes encontrar en" / "Encuentra b'ui en") — driven
+// entirely by assets/retailers.json. Add or remove an entry there and every
+// page picks it up: exactly as many circles render as retailers listed.
+class RetailerLogos {
+    constructor() {
+        this.containers = document.querySelectorAll('.encuentra__logos, .producto-encuentra__logos');
+        if (this.containers.length) this.init();
+    }
+
+    async init() {
+        try {
+            const response = await fetch('assets/retailers.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            this.render(data.retailers || []);
+        } catch (error) {
+            console.error('Error loading retailers:', error);
+        }
+    }
+
+    render(retailers) {
+        this.containers.forEach((container) => {
+            const itemClass = container.classList.contains('producto-encuentra__logos')
+                ? 'producto-encuentra__logo'
+                : 'encuentra__logo';
+
+            container.innerHTML = '';
+
+            retailers.forEach((retailer) => {
+                const item = document.createElement('div');
+                item.className = itemClass;
+
+                const img = document.createElement('img');
+                img.src = retailer.logo;
+                img.alt = retailer.name;
+                img.loading = 'lazy';
+                img.decoding = 'async';
+
+                item.appendChild(img);
+                container.appendChild(item);
+            });
+        });
+    }
+}
+
 // Snap the producto-hero right panel to a whole-pixel width so its 1px
 // divider lands on the same crisp pixel grid as the outer 1px border.
 // aspect-ratio alone can leave the panel edge at a fractional coordinate
@@ -1295,6 +1348,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         console.log('Creating ProductsGrid...');
         window.productsGrid = new ProductsGrid();
+
+        console.log('Creating RetailerLogos...');
+        window.retailerLogos = new RetailerLogos();
 
         initDistribuidorPanel();
         snapProductoHeroDivider();

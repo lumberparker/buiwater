@@ -33,8 +33,6 @@
 .encuentra__logo {
     width: 140px;
     height: 140px;
-    border-radius: 50%;
-    border: 1px solid #000000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,6 +41,14 @@
     font-size: 15px;
     letter-spacing: 1px;
     color: #000000;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.encuentra__logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 @media (max-width: 768px) {

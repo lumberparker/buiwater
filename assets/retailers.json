@@ -1,0 +1,6 @@
+{
+  "retailers": [
+    { "name": "OfficeMax", "logo": "/assets/images/logos/officemax.png" },
+    { "name": "Walmart", "logo": "/assets/images/logos/walmart.png" }
+  ]
+}

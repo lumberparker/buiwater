@@ -19,14 +19,42 @@
       "image": "/assets/images/agua-infusionada-pepino.png",
       "title": "Agua de manantial Infusionada - Pepino",
       "sizes": ["10 Oz / 290 ml"],
-      "circleColor": "#e7f5e8"
+      "circleColor": "#c0ca80"
     },
     {
       "id": 34,
       "image": "/assets/images/agua-infusionada-hierbabuena.png",
       "title": "Agua de manantial Infusionada - Hierbabuena",
       "sizes": ["10 Oz / 290 ml"],
-      "circleColor": "#334217"
+      "circleColor": "#5d7831"
+    },
+    {
+      "id": 5,
+      "image": "/assets/images/productos-natural-tetrapak.png",
+      "title": "Agua Natural Tetra Pak",
+      "sizes": ["11.15 Oz / 330 ml", "16.9 Oz / 500 ml"],
+      "circleColor": "#ffffff"
+    },
+    {
+      "id": 6,
+      "image": "/assets/images/productos-kids-mango.png",
+      "title": "b'ui Kids Mango",
+      "sizes": ["11.15 Oz / 330 ml"],
+      "circleColor": "#fce3b8"
+    },
+    {
+      "id": 7,
+      "image": "/assets/images/productos-kids-manzana.png",
+      "title": "b'ui Kids Manzana",
+      "sizes": ["11.15 Oz / 330 ml"],
+      "circleColor": "#fbdadb"
+    },
+    {
+      "id": 8,
+      "image": "/assets/images/productos-kids-naranja.png",
+      "title": "b'ui Kids Naranja",
+      "sizes": ["11.15 Oz / 330 ml"],
+      "circleColor": "#ffe0bf"
     }
   ]
 }
