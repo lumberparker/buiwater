@@ -17,7 +17,7 @@
 .marquee__content {
     display: flex;
     width: max-content;
-    animation: marqueeScroll 30s linear infinite;
+    animation: marqueeScroll 55s linear infinite;
 }
 
 .marquee__text {
@@ -29,6 +29,19 @@
     color: #000000;
     white-space: nowrap;
     flex-shrink: 0;
+}
+
+.marquee__sep {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.marquee__drop {
+    width: 20px;
+    height: 20px;
+    margin: 0 18px;
+    fill: #c9dee1;
 }
 
 @keyframes marqueeScroll {
@@ -48,6 +61,12 @@
         font-size: 28px;
         line-height: 34px;
         letter-spacing: 3%;
+    }
+
+    .marquee__drop {
+        width: 16px;
+        height: 16px;
+        margin: 0 14px;
     }
 }
 

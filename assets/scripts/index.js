@@ -192,7 +192,7 @@ class LanguageManager {
                     nav: ['Nosotros', 'Productos', 'Contacto'],
                     navProducts: ['Agua natural', 'Agua gasificada', 'Infusiones', "b'ui Kids"],
                     slides: [{ title: 'BUI', subtitle: 'Agua natural de manantial' }],
-                    marquee: 'ERES LO QUE TOMAS  |  ',
+                    marquee: 'ERES LO QUE TOMAS',
                     conoce: { text: 'b\'ui es agua natural', button: 'CONOCE MÁS' },
                     propiedades: { title: 'PROPIEDADES', items: ['Natural'] },
                     presentaciones: { title: 'Presentaciones', items: ['Agua'] },
@@ -203,7 +203,7 @@ class LanguageManager {
                     nav: ['About Us', 'Products', 'Contact'],
                     navProducts: ['Natural water', 'Sparkling water', 'Infusions', "b'ui Kids"],
                     slides: [{ title: 'BUI', subtitle: 'Natural spring water' }],
-                    marquee: 'YOU ARE WHAT YOU DRINK  |  ',
+                    marquee: 'YOU ARE WHAT YOU DRINK',
                     conoce: { text: 'b\'ui is natural water', button: 'LEARN MORE' },
                     propiedades: { title: 'PROPERTIES', items: ['Natural'] },
                     presentaciones: { title: 'Presentations', items: ['Water'] },
@@ -351,10 +351,12 @@ class LanguageManager {
         
         // Update marquee content
         const marqueeTexts = document.querySelectorAll('.marquee__text');
-        const marqueeContent = content.marquee.repeat(6); // Repeat 6 times as in original
-        
+        const marqueeDrop = '<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>';
+        const marqueeUnit = content.marquee + marqueeDrop;
+        const marqueeContent = marqueeUnit.repeat(6); // Repeat 6 times as in original
+
         marqueeTexts.forEach(text => {
-            text.textContent = marqueeContent;
+            text.innerHTML = marqueeContent;
         });
         
         // Update conoce section

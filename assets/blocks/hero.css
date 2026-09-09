@@ -160,6 +160,10 @@
         height: 260px;
     }
 
+    .hero__image {
+        object-position: right center;
+    }
+
     .hero__content {
         position: static;
         width: 100%;
