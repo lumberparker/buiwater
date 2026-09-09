@@ -847,6 +847,8 @@ class ProductsGrid {
         this.autoplayTimer = null;
         this.autoplayDelay = 3000; // ms between auto steps
         this.slideDuration = 500; // ms
+        this.isVisible = false;
+        this.isHovering = false;
         this.init();
     }
     
@@ -928,14 +930,64 @@ class ProductsGrid {
         requestAnimationFrame(() => {
             this.measureStep();
             this.setPosition(0, false);
-            this.startAutoplay();
+            this.observeVisibility();
+            this.syncAutoplay();
         });
         
-        // Pause autoplay while hovering the track
-        this.gridContainer.addEventListener('mouseenter', () => this.stopAutoplay());
-        this.gridContainer.addEventListener('mouseleave', () => this.startAutoplay());
+        this.gridContainer.addEventListener('mouseenter', () => {
+            this.isHovering = true;
+            this.syncAutoplay();
+        });
+        this.gridContainer.addEventListener('mouseleave', () => {
+            this.isHovering = false;
+            this.syncAutoplay();
+        });
+        this.bindSwipe();
+        
+        window.addEventListener('bui-loader-done', () => {
+            this.measureStep();
+            this.setPosition(this.currentIndex, false);
+            this.syncAutoplay();
+        });
         
         console.log(`Rendered ${this.productsData.length} product cards from JSON`);
+    }
+
+    observeVisibility() {
+        if (!this.gridContainer || this._visibilityBound) return;
+        this._visibilityBound = true;
+
+        const io = new IntersectionObserver(
+            (entries) => {
+                this.isVisible = entries.some((entry) => entry.isIntersecting);
+                if (this.isVisible) this.measureStep();
+                this.syncAutoplay();
+            },
+            { threshold: 0.25 }
+        );
+        io.observe(this.gridContainer);
+    }
+
+    bindSwipe() {
+        if (!this.gridContainer || this._swipeBound) return;
+        this._swipeBound = true;
+
+        let startX = 0;
+        let dragging = false;
+
+        this.gridContainer.addEventListener('pointerdown', (e) => {
+            dragging = true;
+            startX = e.clientX;
+        });
+        window.addEventListener('pointerup', (e) => {
+            if (!dragging) return;
+            dragging = false;
+            const dx = e.clientX - startX;
+            if (Math.abs(dx) < 40) return;
+            if (dx < 0) this.next();
+            else this.prev();
+            this.restartAutoplay();
+        });
     }
 
     measureStep() {
@@ -975,11 +1027,13 @@ class ProductsGrid {
             const previousIndex = this.currentIndex % Math.max(this.productsData.length, 1);
             this.measureStep();
             this.setPosition(previousIndex, false);
+            this.syncAutoplay();
         });
     }
 
     next() {
-        if (this.isTransitioning || !this.productsData.length) return;
+        if (!this.cardStep) this.measureStep();
+        if (this.isTransitioning || !this.productsData.length || !this.cardStep) return;
         this.isTransitioning = true;
 
         const numCards = this.productsData.length;
@@ -1000,7 +1054,8 @@ class ProductsGrid {
     }
 
     prev() {
-        if (this.isTransitioning || !this.productsData.length) return;
+        if (!this.cardStep) this.measureStep();
+        if (this.isTransitioning || !this.productsData.length || !this.cardStep) return;
         this.isTransitioning = true;
 
         const numCards = this.productsData.length;
@@ -1024,8 +1079,20 @@ class ProductsGrid {
         }
     }
 
+    syncAutoplay() {
+        const shouldRun =
+            this.isVisible &&
+            !this.isHovering &&
+            this.productsData.length > 1 &&
+            this.cardStep > 0 &&
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (shouldRun) this.startAutoplay();
+        else this.stopAutoplay();
+    }
+
     startAutoplay() {
-        this.stopAutoplay();
+        if (this.autoplayTimer) return;
         if (this.productsData.length <= 1) return;
         this.autoplayTimer = setInterval(() => this.next(), this.autoplayDelay);
     }
@@ -1039,7 +1106,7 @@ class ProductsGrid {
 
     restartAutoplay() {
         this.stopAutoplay();
-        this.startAutoplay();
+        this.syncAutoplay();
     }
     
     createProductCard(product) {

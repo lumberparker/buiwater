@@ -214,24 +214,15 @@
 
     .productos__grid {
         display: flex;
-        overflow-x: auto;
-        overflow-y: hidden;
+        overflow: hidden;
         gap: 20px;
         align-items: start;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    .productos__grid::-webkit-scrollbar {
-        display: none;
+        touch-action: pan-y pinch-zoom;
     }
 
     .productos__carousel {
         display: flex;
         gap: 20px;
-        animation: none !important;
-        transform: none !important;
     }
 
     .productos__card {
