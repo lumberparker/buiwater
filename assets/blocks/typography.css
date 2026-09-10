@@ -14,7 +14,12 @@ body {
     color: #000000;
 }
 
-/* --- Titles --- */
+/* --- Titles ---
+   !important: dozens of component files set font-family on their own
+   specific classes (e.g. .distribuidor__subtitle, .faq__answer). A class
+   selector always outranks the bare tag/attribute selectors below on
+   specificity, regardless of file load order — !important is what
+   actually makes this file authoritative, as intended. */
 h1, h2, h3, h4, h5, h6,
 [class*="__title"],
 [class*="__heading"],
@@ -24,8 +29,8 @@ h1, h2, h3, h4, h5, h6,
 .footer__nav-heading,
 .presentaciones__item-title,
 .categorias__item-title {
-    font-family: var(--font-poppins);
-    font-weight: 700;
+    font-family: var(--font-poppins) !important;
+    font-weight: 700 !important;
 }
 
 /* --- Body / UI (everything else) --- */
@@ -37,17 +42,8 @@ label,
 input,
 textarea,
 span,
-.header__nav-link,
-.header__submenu-link,
-.categorias__item-subtitle,
-.hero__content-subtitle,
-.producto-presentacion__paragraph,
-.producto-presentacion__spec-label,
-.producto-presentacion__spec-value,
-.footer__nav-link,
-.footer__privacy-link,
-.footer__copyright {
-    font-family: var(--font-satoshi);
+div {
+    font-family: var(--font-satoshi) !important;
 }
 
 /* --- Buttons → Poppins Bold --- */
@@ -58,16 +54,16 @@ span,
 .sobre-distribuidor__submit,
 .producto-tabs__tab,
 .faq__question {
-    font-family: var(--font-poppins);
-    font-weight: 700;
+    font-family: var(--font-poppins) !important;
+    font-weight: 700 !important;
 }
 
 /* Handwritten note under product specs — not a title */
 .producto-presentacion__note {
-    font-family: "Segoe Script", "Brush Script MT", cursive;
+    font-family: "Segoe Script", "Brush Script MT", cursive !important;
 }
 
 /* Marquee keeps display style but uses body family unless designed otherwise */
 .marquee__text {
-    font-family: var(--font-satoshi);
+    font-family: var(--font-satoshi) !important;
 }
