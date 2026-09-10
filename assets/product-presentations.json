@@ -105,7 +105,7 @@
           "atributos": {
             "imagen": "agua-infusionada-pepino.png",
             "imagenAlt": "Botella b'ui infusión pepino",
-            "circleColor": "#c3d59e",
+            "circleColor": "#c0ca80",
             "tituloHtml": "Pepino<br>Infusión",
             "parrafos": [
               "Nuestra agua infusionada ligeramente carbonatada presenta notas refrescantes de pepino, lo que ofrece una alternativa perfecta y sin calorías para los rituales de bienestar.",
@@ -126,7 +126,7 @@
           "atributos": {
             "imagen": "agua-infusionada-hierbabuena.png",
             "imagenAlt": "Botella b'ui infusión hierbabuena",
-            "circleColor": "#334217",
+            "circleColor": "#5d7831",
             "tituloHtml": "Hierbabuena<br>Infusión",
             "parrafos": [
               "Nuestra agua infusionada ligeramente carbonatada presenta notas refrescantes de hierbabuena, lo que ofrece una alternativa perfecta y sin calorías para los rituales de bienestar.",

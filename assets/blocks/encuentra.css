@@ -31,8 +31,8 @@
 }
 
 .encuentra__logo {
-    width: 140px;
-    height: 140px;
+    width: 280px;
+    height: 280px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,15 +57,15 @@
     }
 
     .encuentra__logo {
-        width: 110px;
-        height: 110px;
+        width: 220px;
+        height: 220px;
     }
 }
 
 @media (max-width: 480px) {
     .encuentra__logo {
-        width: 90px;
-        height: 90px;
+        width: 180px;
+        height: 180px;
         font-size: 13px;
     }
 

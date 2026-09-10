@@ -29,6 +29,12 @@
     font-family: var(--font-josefin);
 }
 
+/* Keep the anchor out of the flex box model so the image lays out
+   exactly as it did as a direct flex child. */
+.footer__bottle a {
+    display: contents;
+}
+
 .footer__bottle-image {
     width: 100%;
     max-width: 100px;

@@ -11,11 +11,12 @@
     <link rel="shortcut icon" href="./favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Homemade+Apple&display=swap">
     <link rel="stylesheet" href="styles.css">
     <script src="assets/scripts/index.js" defer></script>
     <script src="assets/scripts/preload-media.js" defer></script>
     <script src="assets/scripts/reveal.js" defer></script>
+    <script src="assets/scripts/product-page.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -65,10 +66,10 @@
 
     <section class="producto-hero producto-hero--equal">
         <div class="producto-hero__panel">
-            <img id="infusionHeroLeft" src="assets/images/infusiones-pepino-hero-1.png" alt="Botella b'ui infusión pepino" class="producto-hero__image" fetchpriority="high" decoding="async">
+            <img src="assets/images/infusiones-pepino-hero-1.png" alt="Botella b'ui infusión pepino" class="producto-hero__image" fetchpriority="high" decoding="async">
         </div>
         <div class="producto-hero__panel producto-hero__panel--right">
-            <img id="infusionHeroRight" src="assets/images/infusiones-pepino-hero-2.png" alt="Hojas de menta sobre agua" class="producto-hero__image">
+            <img src="assets/images/infusiones-pepino-hero-2.png" alt="Hojas de menta sobre agua" class="producto-hero__image">
         </div>
     </section>
 
@@ -76,20 +77,20 @@
         <h1 class="producto-titlebar__title">Infusiones Gasificadas</h1>
     </div>
 
-    <div class="producto-tabs">
-        <button type="button" class="producto-tabs__tab is-active" data-infusion="pepino">Pepino</button>
-        <button type="button" class="producto-tabs__tab" data-infusion="hierbabuena">Hierbabuena</button>
-    </div>
+    <!-- Tabs + presentation body filled from assets/product-presentations.json -->
+    <div class="producto-tabs" role="tablist" aria-label="Presentaciones"></div>
 
-    <section class="producto-presentacion">
-        <div class="producto-presentacion__image-wrap" id="infusionImageWrap" style="--presentacion-circle:#e7f5e8;">
-            <img id="infusionBottleImage" src="assets/images/agua-infusionada-pepino.png" alt="Botella b'ui infusión pepino" class="producto-presentacion__image">
+    <section class="producto-presentacion" data-product="infusiones">
+        <div class="producto-presentacion__image-wrap">
+            <img src="assets/images/agua-infusionada-pepino.png" alt="Botella b'ui infusión pepino" class="producto-presentacion__image">
         </div>
         <div class="producto-presentacion__content">
-            <h2 class="producto-presentacion__title" id="infusionTitle">Pepino Infusión</h2>
-            <p class="producto-presentacion__paragraph" id="infusionParagraph1">Nuestra agua infusionada ligeramente carbonatada presenta notas refrescantes de pepino, lo que ofrece una alternativa perfecta y sin calorías para los rituales de bienestar.</p>
-            <p class="producto-presentacion__paragraph" id="infusionParagraph2">Además es ideal como mezclador o acompañamiento sofisticado de licores de primera calidad, aporta un toque de elegancia y sabor a cualquier bebida.</p>
-            <div class="producto-presentacion__specs">
+            <h2 class="producto-presentacion__title">Pepino<br>Infusión</h2>
+            <div data-presentacion-paragraphs>
+                <p class="producto-presentacion__paragraph">Nuestra agua infusionada ligeramente carbonatada presenta notas refrescantes de pepino, lo que ofrece una alternativa perfecta y sin calorías para los rituales de bienestar.</p>
+                <p class="producto-presentacion__paragraph">Además es ideal como mezclador o acompañamiento sofisticado de licores de primera calidad, aporta un toque de elegancia y sabor a cualquier bebida.</p>
+            </div>
+            <div class="producto-presentacion__specs" data-presentacion-specs>
                 <div>
                     <p class="producto-presentacion__spec-label">Envase</p>
                     <p class="producto-presentacion__spec-value">Vidrio</p>
@@ -111,51 +112,6 @@
         </div>
     </section>
 
-    <script>
-        (function () {
-            var data = {
-                pepino: {
-                    heroLeft: 'assets/images/infusiones-pepino-hero-1.png',
-                    heroRight: 'assets/images/infusiones-pepino-hero-2.png',
-                    bottle: 'assets/images/agua-infusionada-pepino.png',
-                    circleColor: '#e7f5e8',
-                    title: 'Pepino Infusión',
-                    p1: 'Nuestra agua infusionada ligeramente carbonatada presenta notas refrescantes de pepino, lo que ofrece una alternativa perfecta y sin calorías para los rituales de bienestar.',
-                    p2: 'Además es ideal como mezclador o acompañamiento sofisticado de licores de primera calidad, aporta un toque de elegancia y sabor a cualquier bebida.'
-                },
-                hierbabuena: {
-                    heroLeft: 'assets/images/infusiones-pepino-hero-1.png',
-                    heroRight: 'assets/images/infusiones-pepino-hero-2.png',
-                    bottle: 'assets/images/agua-infusionada-hierbabuena.png',
-                    circleColor: '#334217',
-                    title: 'Hierbabuena Infusión',
-                    p1: 'Nuestra agua infusionada ligeramente carbonatada presenta notas frescas de hierbabuena, ideal para despejar los sentidos en cualquier momento del día.',
-                    p2: 'Además es ideal como mezclador o acompañamiento sofisticado de licores de primera calidad, aporta un toque de frescura y sabor a cualquier bebida.'
-                }
-            };
-
-            var tabs = document.querySelectorAll('.producto-tabs__tab[data-infusion]');
-            tabs.forEach(function (tab) {
-                tab.addEventListener('click', function () {
-                    var key = tab.getAttribute('data-infusion');
-                    var d = data[key];
-                    if (!d) return;
-
-                    tabs.forEach(function (t) { t.classList.remove('is-active'); });
-                    tab.classList.add('is-active');
-
-                    document.getElementById('infusionHeroLeft').src = d.heroLeft;
-                    document.getElementById('infusionHeroRight').src = d.heroRight;
-                    document.getElementById('infusionBottleImage').src = d.bottle;
-                    document.getElementById('infusionImageWrap').style.setProperty('--presentacion-circle', d.circleColor);
-                    document.getElementById('infusionTitle').textContent = d.title;
-                    document.getElementById('infusionParagraph1').textContent = d.p1;
-                    document.getElementById('infusionParagraph2').textContent = d.p2;
-                });
-            });
-        })();
-    </script>
-
     <div class="producto-cta">
         <a href="contacto.html" class="producto-cta-button">COMPRA DIRECTAMENTE CON NOSOTROS</a>
     </div>
@@ -164,13 +120,6 @@
         <h2 class="producto-encuentra__title">Encuentra b'ui en</h2>
         <div class="producto-encuentra__logos">
             </div>
-    </section>
-
-    <section class="marquee">
-        <div class="marquee__content">
-            <span class="marquee__text">ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span></span>
-            <span class="marquee__text">ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span></span>
-        </div>
     </section>
 
     <section class="distribuidor">
@@ -224,14 +173,17 @@
         </div>
     </div>
 
-    <section class="tagline">
-        <p class="tagline__text">ERES LO QUE TOMAS</p>
+    <section class="marquee">
+        <div class="marquee__content">
+            <span class="marquee__text">ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span></span>
+            <span class="marquee__text">ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span>ERES LO QUE TOMAS<span class="marquee__sep"><svg class="marquee__drop" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0C19 10.5 12 2 12 2z"/></svg></span></span>
+        </div>
     </section>
 
     <footer class="footer">
         <div class="footer__grid">
             <div class="footer__bottle">
-                <img src="assets/images/botella.png" alt="BUI Water Bottle" class="footer__bottle-image">
+                <a href="index.html" aria-label="Ir al inicio"><img src="assets/images/botella.png" alt="BUI Water Bottle" class="footer__bottle-image"></a>
             </div>
 
             <div class="footer__nav-container">

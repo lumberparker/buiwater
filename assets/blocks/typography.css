@@ -60,7 +60,7 @@ div {
 
 /* Handwritten note under product specs — not a title */
 .producto-presentacion__note {
-    font-family: "Segoe Script", "Brush Script MT", cursive !important;
+    font-family: "Homemade Apple", cursive !important;
 }
 
 /* Marquee keeps display style but uses body family unless designed otherwise */
