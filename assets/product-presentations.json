@@ -148,6 +148,31 @@
       "nombre": "b'ui Kids",
       "page": "kids.html",
       "presentaciones": []
+    },
+    {
+      "id": "packs",
+      "nombre": "Packs",
+      "page": "packs.html",
+      "presentaciones": [
+        {
+          "id": "pack-12-infusiones-mix",
+          "nombre": "Pack de 12 Infusiones Mix",
+          "atributos": {
+            "imagen": "pack-12-infusiones-mix.png",
+            "imagenAlt": "Pack de 12 b'ui Infusiones Mix",
+            "circleColor": "#d8e6ee",
+            "tituloHtml": "Pack de 12<br>Infusiones Mix",
+            "parrafos": [
+              "Mix de b'ui infusiones. 6 piezas de sabor pepino y 6 piezas de sabor hierbabuena."
+            ],
+            "specs": [
+              { "label": "Presentación", "value": "290ml" },
+              { "label": "Balance", "value": "Gasificada sin calorías" },
+              { "label": "Envase", "value": "Vidrio" }
+            ]
+          }
+        }
+      ]
     }
   ]
 }

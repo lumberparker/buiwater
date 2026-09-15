@@ -16,6 +16,7 @@
     <script src="assets/scripts/index.js" defer></script>
     <script src="assets/scripts/preload-media.js" defer></script>
     <script src="assets/scripts/reveal.js" defer></script>
+    <script src="assets/scripts/forms.js" defer></script>
     <script src="assets/scripts/product-page.js" defer></script>
 </head>
 <body data-product="agua-gasificada">
@@ -45,6 +46,9 @@
                             <li class="header__submenu-item">
                                 <a href="kids.html" class="header__submenu-link">b'ui Kids</a>
                             </li>
+                            <li class="header__submenu-item">
+                                <a href="packs.html" class="header__submenu-link">Packs</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="header__nav-item"><a href="contacto.html" class="header__nav-link">Contacto</a></li>
@@ -66,10 +70,10 @@
 
     <section class="producto-hero">
         <div class="producto-hero__panel">
-            <img src="assets/images/agua-gasificada-hero-1.png" alt="Burbujas de agua gasificada b'ui" class="producto-hero__image" fetchpriority="high" decoding="async">
+            <img src="assets/images/agua-gasificada-hero-1.jpg" alt="Burbujas de agua gasificada b'ui" class="producto-hero__image" fetchpriority="high" decoding="async">
         </div>
         <div class="producto-hero__panel producto-hero__panel--right">
-            <img src="assets/images/agua-gasificada-hero-2.png" alt="Botella b'ui agua gasificada sobre roca" class="producto-hero__image">
+            <img src="assets/images/agua-gasificada-hero-2.jpg" alt="Botella b'ui agua gasificada sobre roca" class="producto-hero__image">
         </div>
     </section>
 
@@ -145,10 +149,14 @@
                     <div class="sobre-distribuidor__text">
                         <p class="sobre-distribuidor__paragraph">Envía este formulario y un miembro de nuestro equipo te contactará.</p>
                     </div>
-                    <form class="sobre-distribuidor__form">
+                    <form class="sobre-distribuidor__form" data-form-type="distribuidor" action="/api/contact" method="POST">
+                        <div class="sobre-distribuidor__field sobre-distribuidor__field--trap" aria-hidden="true">
+                            <label for="distribuidorWebsite">No llenar</label>
+                            <input type="text" id="distribuidorWebsite" name="website" tabindex="-1" autocomplete="off">
+                        </div>
                         <div class="sobre-distribuidor__form-grid">
                             <div class="sobre-distribuidor__field">
-                                <input type="text" placeholder="Nombre" name="nombre">
+                                <input type="text" placeholder="Nombre" name="nombre" required>
                             </div>
                             <div class="sobre-distribuidor__field">
                                 <input type="text" placeholder="Apellido" name="apellido">
@@ -157,7 +165,7 @@
                                 <input type="tel" placeholder="Teléfono" name="telefono">
                             </div>
                             <div class="sobre-distribuidor__field">
-                                <input type="email" placeholder="Correo Electrónico" name="correo">
+                                <input type="email" placeholder="Correo Electrónico" name="correo" required>
                             </div>
                             <div class="sobre-distribuidor__field sobre-distribuidor__field--full">
                                 <input type="text" placeholder="Nombre de tu empresa" name="empresa">
@@ -166,7 +174,8 @@
                                 <textarea placeholder="Mensaje" name="mensaje" rows="1"></textarea>
                             </div>
                         </div>
-                        <button type="button" class="sobre-distribuidor__submit">ENVIAR</button>
+                        <button type="submit" class="sobre-distribuidor__submit">ENVIAR</button>
+                        <p class="sobre-distribuidor__status" role="status" aria-live="polite"></p>
                     </form>
                 </div>
             </section>
@@ -202,6 +211,7 @@
                         <a href="agua-gasificada.html" class="footer__nav-link">Agua mineral</a>
                         <a href="infusiones.html" class="footer__nav-link">Infusiones</a>
                         <a href="kids.html" class="footer__nav-link">b'ui Kids</a>
+                        <a href="packs.html" class="footer__nav-link">Packs</a>
                     </nav>
                 </div>
             </div>

@@ -88,6 +88,15 @@
     object-fit: contain;
 }
 
+/* Gasificada/Packs right-panel photo is landscape (674x418), not the
+   540x534 shape the shared panel assumes — match the panel to it so
+   object-fit: contain has no letterboxing to fill. */
+body[data-product="agua-gasificada"] .producto-hero__panel--right,
+body[data-product="packs"] .producto-hero__panel--right {
+    aspect-ratio: 674 / 418;
+    background-color: #fafafa;
+}
+
 /*
   Infusiones only: true 50/50, both cover.
   Same absolutely-positioned 1px divider as the default hero.
@@ -217,6 +226,16 @@
     object-fit: contain;
     filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.08));
     transition: opacity 0.2s ease;
+}
+
+/* Pack box render is roughly square, not a tall bottle silhouette —
+   the shared height:100%/max-width:58% sizing (tuned for bottles)
+   leaves it small and fully inside the circle instead of overflowing
+   it like the other product photos. */
+body[data-product="packs"] .producto-presentacion__image {
+    height: auto;
+    width: 90%;
+    max-width: 90%;
 }
 
 /* Legacy wrap — circle only via ::before, container stays clear */

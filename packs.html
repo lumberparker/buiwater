@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CONTÁCTANOS | B'UI</title>
+    <title>PACKS | B'UI</title>
 
-    <meta name="description" content="Contáctanos: comparte tus opiniones, preguntas o dudas sobre b'ui. Consulta también nuestras preguntas frecuentes.">
+    <meta name="description" content="Packs b'ui: combina tus sabores favoritos en un solo pack.">
     <meta name="author" content="Rodney Parker">
 
     <link rel="shortcut icon" href="./favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Homemade+Apple&display=swap">
     <link rel="stylesheet" href="styles.css">
     <script src="assets/scripts/index.js" defer></script>
     <script src="assets/scripts/preload-media.js" defer></script>
     <script src="assets/scripts/reveal.js" defer></script>
     <script src="assets/scripts/forms.js" defer></script>
+    <script src="assets/scripts/product-page.js" defer></script>
 </head>
-<body>
+<body data-product="packs">
     <header class="header">
         <div class="header__content">
             <div class="header__left">
@@ -67,80 +68,114 @@
         </div>
     </header>
 
-    <section class="sobre-distribuidor">
-        <div class="sobre-distribuidor__content">
-            <div class="sobre-distribuidor__text">
-                <h2 class="sobre-distribuidor__title">Contáctanos</h2>
-                <p class="sobre-distribuidor__paragraph">Compártenos tus opiniones, preguntas, duda o saludos, estaremos encantados de poder conversar.</p>
-                <img src="assets/images/contacto-bottle-rock.jpg" alt="Botella b'ui sobre roca en el agua" class="sobre-distribuidor__image" loading="lazy" decoding="async">
-            </div>
-            <form class="sobre-distribuidor__form" data-form-type="contacto" action="/api/contact" method="POST">
-                <div class="sobre-distribuidor__field sobre-distribuidor__field--trap" aria-hidden="true">
-                    <label for="contactoWebsite">No llenar</label>
-                    <input type="text" id="contactoWebsite" name="website" tabindex="-1" autocomplete="off">
-                </div>
-                <div class="sobre-distribuidor__form-grid">
-                    <div class="sobre-distribuidor__field">
-                        <input type="text" placeholder="Nombre" name="nombre" required>
-                    </div>
-                    <div class="sobre-distribuidor__field">
-                        <input type="text" placeholder="Apellido" name="apellido">
-                    </div>
-                    <div class="sobre-distribuidor__field sobre-distribuidor__field--full">
-                        <input type="email" placeholder="Correo Electrónico" name="correo" required>
-                    </div>
-                    <div class="sobre-distribuidor__field sobre-distribuidor__field--full">
-                        <textarea placeholder="Mensaje" name="mensaje" rows="1" required></textarea>
-                    </div>
-                </div>
-                <button type="submit" class="sobre-distribuidor__submit">ENVIAR</button>
-                <p class="sobre-distribuidor__status" role="status" aria-live="polite"></p>
-            </form>
+    <section class="producto-hero">
+        <div class="producto-hero__panel">
+            <img src="assets/images/agua-gasificada-hero-1.jpg" alt="Burbujas de agua gasificada b'ui" class="producto-hero__image" fetchpriority="high" decoding="async">
+        </div>
+        <div class="producto-hero__panel producto-hero__panel--right">
+            <img src="assets/images/agua-gasificada-hero-2.jpg" alt="Botella b'ui agua gasificada sobre roca" class="producto-hero__image">
         </div>
     </section>
 
-    <section class="faq" id="faq">
-        <hr class="faq__divider">
-        <h2 class="faq__title">Preguntas frecuentes</h2>
-        <div class="faq__list">
-            <div class="faq__item is-open">
-                <button type="button" class="faq__question">
-                    <span>¿Cuál es la diferencia entre b'ui y otras aguas en el mercado?</span>
-                    <span class="faq__icon"></span>
-                </button>
-                <div class="faq__answer">
-                    <p class="faq__answer-text">b'ui se extrae de manantiales profundos y se embotella sin alterar su composición natural, conservando su equilibrio mineral, pH neutro y baja salinidad tal como la entrega la fuente.</p>
-                </div>
+    <div class="producto-titlebar">
+        <h1 class="producto-titlebar__title">Packs</h1>
+    </div>
+
+    <!-- Tabs only rendered when product has 2+ presentaciones in JSON -->
+    <div class="producto-tabs" role="tablist" aria-label="Presentaciones" hidden></div>
+
+    <section class="producto-presentacion" data-product="packs">
+        <div class="producto-presentacion__media">
+            <div class="producto-presentacion__circle" aria-hidden="true"></div>
+            <img src="assets/images/pack-12-infusiones-mix.png" alt="Pack de 12 b'ui Infusiones Mix" class="producto-presentacion__image">
+        </div>
+        <div class="producto-presentacion__content">
+            <h2 class="producto-presentacion__title">Pack de 12<br>Infusiones Mix</h2>
+            <div data-presentacion-paragraphs>
+                <p class="producto-presentacion__paragraph">Mix de b'ui infusiones. 6 piezas de sabor pepino y 6 piezas de sabor hierbabuena.</p>
             </div>
-            <div class="faq__item">
-                <button type="button" class="faq__question">
-                    <span>¿Dónde puedo comprar b'ui?</span>
-                    <span class="faq__icon"></span>
-                </button>
-                <div class="faq__answer">
-                    <p class="faq__answer-text">Por ahora puedes encontrarla en Walmart y Office Max, además de comprarla directamente con nosotros.</p>
+            <div class="producto-presentacion__specs" data-presentacion-specs>
+                <div>
+                    <p class="producto-presentacion__spec-label">Presentación</p>
+                    <p class="producto-presentacion__spec-value">290ml</p>
                 </div>
-            </div>
-            <div class="faq__item">
-                <button type="button" class="faq__question">
-                    <span>¿Es posible que el agua de manantial se acabe?</span>
-                    <span class="faq__icon"></span>
-                </button>
-                <div class="faq__answer">
-                    <p class="faq__answer-text">Nuestros manantiales son monitoreados constantemente para asegurar una extracción responsable y sustentable en el tiempo.</p>
+                <div>
+                    <p class="producto-presentacion__spec-label">Balance</p>
+                    <p class="producto-presentacion__spec-value">Gasificada sin calorías</p>
                 </div>
-            </div>
-            <div class="faq__item">
-                <button type="button" class="faq__question">
-                    <span>¿Cómo embotellan b'ui?</span>
-                    <span class="faq__icon"></span>
-                </button>
-                <div class="faq__answer">
-                    <p class="faq__answer-text">b'ui se embotella en vidrio directamente en la fuente, minimizando el manejo para preservar su pureza y propiedades originales.</p>
+                <div>
+                    <p class="producto-presentacion__spec-label">Envase</p>
+                    <p class="producto-presentacion__spec-value">Vidrio</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="producto-cta">
+        <a href="contacto.html" class="producto-cta-button">COMPRA DIRECTAMENTE CON NOSOTROS</a>
+    </div>
+
+    <section class="producto-encuentra">
+        <h2 class="producto-encuentra__title">Encuentra b'ui en</h2>
+        <div class="producto-encuentra__logos">
+            </div>
+    </section>
+
+    <section class="distribuidor">
+        <div class="distribuidor__content">
+            <div class="distribuidor__text">
+                <h2 class="distribuidor__title">SÉ DISTRIBUIDOR DE B'UI</h2>
+                <p class="distribuidor__subtitle">Haz crecer tu negocio con b'ui. Conviértete en distribuidor y descubre las oportunidades de formar parte de una marca en expansión.</p>
+            </div>
+            <button type="button" class="distribuidor__button" data-open-distribuidor>COMENZAR MI REGISTRO</button>
+        </div>
+    </section>
+
+    <div class="distribuidor-panel" id="distribuidorPanel" aria-hidden="true">
+        <div class="distribuidor-panel__backdrop" data-close-distribuidor></div>
+        <div class="distribuidor-panel__sheet" role="dialog" aria-modal="true">
+            <button type="button" class="distribuidor-panel__close" data-close-distribuidor aria-label="Cerrar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <section class="sobre-distribuidor" id="contacto">
+                <div class="sobre-distribuidor__content">
+                    <div class="sobre-distribuidor__text">
+                        <p class="sobre-distribuidor__paragraph">Envía este formulario y un miembro de nuestro equipo te contactará.</p>
+                    </div>
+                    <form class="sobre-distribuidor__form" data-form-type="distribuidor" action="/api/contact" method="POST">
+                        <div class="sobre-distribuidor__field sobre-distribuidor__field--trap" aria-hidden="true">
+                            <label for="distribuidorWebsite">No llenar</label>
+                            <input type="text" id="distribuidorWebsite" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        <div class="sobre-distribuidor__form-grid">
+                            <div class="sobre-distribuidor__field">
+                                <input type="text" placeholder="Nombre" name="nombre" required>
+                            </div>
+                            <div class="sobre-distribuidor__field">
+                                <input type="text" placeholder="Apellido" name="apellido">
+                            </div>
+                            <div class="sobre-distribuidor__field">
+                                <input type="tel" placeholder="Teléfono" name="telefono">
+                            </div>
+                            <div class="sobre-distribuidor__field">
+                                <input type="email" placeholder="Correo Electrónico" name="correo" required>
+                            </div>
+                            <div class="sobre-distribuidor__field sobre-distribuidor__field--full">
+                                <input type="text" placeholder="Nombre de tu empresa" name="empresa">
+                            </div>
+                            <div class="sobre-distribuidor__field sobre-distribuidor__field--full">
+                                <textarea placeholder="Mensaje" name="mensaje" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="sobre-distribuidor__submit">ENVIAR</button>
+                        <p class="sobre-distribuidor__status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
 
     <section class="marquee">
         <div class="marquee__content">
@@ -203,18 +238,6 @@
             </div>
         </div>
     </footer>
-<script>
-    (function () {
-        var items = document.querySelectorAll('.faq__item');
-        items.forEach(function (item) {
-            var question = item.querySelector('.faq__question');
-            question.addEventListener('click', function () {
-                var wasOpen = item.classList.contains('is-open');
-                items.forEach(function (i) { i.classList.remove('is-open'); });
-                if (!wasOpen) item.classList.add('is-open');
-            });
-        });
-    })();
-</script>
+
 </body>
 </html>
