@@ -25,12 +25,18 @@ h1, h2, h3, h4, h5, h6,
 [class*="__heading"],
 .tagline__text,
 .kids-flavor__name,
-.hero__content-title,
 .footer__nav-heading,
 .presentaciones__item-title,
 .categorias__item-title {
     font-family: var(--font-poppins) !important;
     font-weight: 700 !important;
+}
+
+/* Hero title: same weight as the "ERES LO QUE TOMAS" marquee text,
+   per explicit request — every other title stays bold. */
+.hero__content-title {
+    font-family: var(--font-poppins) !important;
+    font-weight: 500 !important;
 }
 
 /* --- Body / UI (everything else) --- */
