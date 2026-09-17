@@ -274,11 +274,26 @@
     gap: 80px;
 }
 
+/* Contacto page only: photo on the left spanning the full height,
+   title/paragraph stacked above the form on the right. */
+.sobre-distribuidor__right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    min-width: 0;
+}
+
 .sobre-distribuidor__text {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+/* Nested inside __right (contacto page): size to content, don't stretch */
+.sobre-distribuidor__right .sobre-distribuidor__text {
+    flex: none;
 }
 
 .sobre-distribuidor__title {
@@ -302,9 +317,11 @@
 
 .sobre-distribuidor__image {
     width: 100%;
-    max-width: 420px;
-    height: 320px;
-    object-fit: contain;
+    max-width: 340px;
+    height: auto;
+    align-self: stretch;
+    flex-shrink: 0;
+    object-fit: cover;
 }
 
 .sobre-distribuidor__contact {
