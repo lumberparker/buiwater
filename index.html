@@ -41,7 +41,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="styles.css">
     <!-- Loader clip is the first thing the visitor sees — fetch it at max priority. -->
-    <link rel="preload" href="assets/videos/bui-loader.mp4" as="video" type="video/mp4" fetchpriority="high">
+    <link rel="preload" href="assets/images/bui-loader.webp" as="image" type="image/webp" fetchpriority="high">
     <style>
         /* Critical loader paint — don't wait on the CSS @import chain */
         .page-loader{position:fixed;top:0;left:0;width:100%;height:100%;background-color:#f9f7f3;display:flex;justify-content:center;align-items:center;z-index:9999;opacity:1}
@@ -62,7 +62,10 @@
     <div id="page-loader" class="page-loader">
         <div class="loader-content">
             <div class="loader-video-mask">
-                <video class="loader-video" src="assets/videos/bui-loader.mp4" autoplay muted playsinline webkit-playsinline preload="auto" aria-label="Cargando"></video>
+                <picture>
+                    <source srcset="assets/images/bui-loader.webp" type="image/webp">
+                    <img class="loader-gif" src="assets/images/bui-loader.gif" width="187" height="480" alt="" aria-label="Cargando">
+                </picture>
             </div>
             <p class="loader-text">Cargando...</p>
         </div>

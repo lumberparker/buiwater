@@ -1,5 +1,6 @@
-// Home page loader. Plays the bottle clip, then gets out of the way.
-// Never blocks on other media. Always dismisses — even if the video stalls.
+// Home page loader. Plays the bottle clip as an image (WebP/GIF), then
+// gets out of the way. Images are not gated by mobile autoplay rules.
+// Never blocks on other media. Always dismisses — even if the image stalls.
 (function () {
     const loader = document.getElementById('page-loader');
     if (!loader) return;
@@ -24,7 +25,6 @@
             video.dataset.buiLoaderHold = '1';
             video.autoplay = false;
             video.removeAttribute('autoplay');
-            // Stop in-flight fetches so the loader clip gets the pipe
             if (video.preload !== 'none') video.preload = 'none';
             try {
                 video.pause();
@@ -78,49 +78,25 @@
         content.appendChild(track);
     }
 
-    function setupLoaderVideo() {
+    function setupLoader() {
         holdCompetingMedia();
         injectProgress();
 
-        // Soft cap (respects MIN) and a hard safety net that always dismisses
         setTimeout(hideWhenReady, MAX_LOADER_MS);
         setTimeout(hideLoader, SAFETY_MS);
 
-        const video = loader.querySelector('.loader-video');
-        if (!video) {
+        const img = loader.querySelector('.loader-gif');
+        if (!img) {
             setTimeout(hideWhenReady, MIN_LOADER_MS);
             return;
         }
 
-        video.muted = true;
-        video.defaultMuted = true;
-        video.playsInline = true;
-        video.loop = false;
-        // Do NOT call video.load() — it aborts the preload already in flight.
-
-        video.addEventListener('ended', hideWhenReady, { once: true });
-        video.addEventListener('error', hideWhenReady, { once: true });
-        video.addEventListener(
-            'stalled',
-            () => {
-                setTimeout(() => {
-                    if (!dismissed && video.readyState < 3) hideWhenReady();
-                }, 1200);
-            },
-            { once: true }
-        );
-
-        const tryPlay = () => {
-            video.play().catch(hideWhenReady);
-        };
-
-        if (video.readyState >= 2) tryPlay();
-        else video.addEventListener('canplay', tryPlay, { once: true });
+        img.addEventListener('error', hideWhenReady, { once: true });
     }
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupLoaderVideo);
+        document.addEventListener('DOMContentLoaded', setupLoader);
     } else {
-        setupLoaderVideo();
+        setupLoader();
     }
 })();
