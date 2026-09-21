@@ -57,6 +57,14 @@ class HeroCarousel {
         // Start auto-sliding (no-ops when there's only one slide)
         this.startAutoSlide();
 
+        // The interval above starts counting at page load, but the loader
+        // overlay can sit on top for up to a few seconds — without this,
+        // the countdown keeps ticking underneath it, so the very first
+        // slide can flash by right after the loader clears. Restart the
+        // timer once the loader is actually gone so the user gets the
+        // full interval on the slide they can see.
+        window.addEventListener('bui-loader-done', () => this.startAutoSlide());
+
         // Pause-on-hover was wired to mouseenter/mouseleave on the hero
         // section. Those fire not just from actual mouse movement but also
         // whenever scrolling moves the page under a stationary cursor —
@@ -128,7 +136,7 @@ class HeroCarousel {
         if (this.slides.length <= 1) return;
         this.autoSlideInterval = setInterval(() => {
             this.nextSlide();
-        }, 5000);
+        }, 6000);
     }
     
     pauseAutoSlide() {
