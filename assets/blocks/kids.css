@@ -98,7 +98,7 @@
     margin: 0 auto;
     padding: 70px 40px 50px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 40px;
     text-align: center;
 }
@@ -161,6 +161,10 @@
     color: #e07a20;
 }
 
+.kids-flavor__name--uva {
+    color: #8e5ba6;
+}
+
 .kids-flavor__size {
     margin: 0;
     font-family: var(--font-josefin);
@@ -173,7 +177,7 @@
     max-width: 1100px;
     margin: 20px auto 70px;
     padding: 40px 48px;
-    background-color: #d7eaf5;
+    background-color: #bfe1ef;
     display: grid;
     grid-template-columns: 1fr 1.35fr;
     gap: 24px 30px;
@@ -199,57 +203,17 @@
     max-width: 280px;
 }
 
-/* Box behind; three cartons layered in front (design composition) */
 .kids-pack__media {
-    position: relative;
     width: 100%;
     max-width: 480px;
     margin-left: auto;
-    min-height: 240px;
-    padding: 12px 0 0;
 }
 
-.kids-pack__caja {
+.kids-pack__photo {
     display: block;
-    width: 78%;
-    max-width: 380px;
+    width: 100%;
     height: auto;
-    object-fit: contain;
-    margin-left: auto;
-    position: relative;
-    z-index: 0;
-    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.08));
-}
-
-.kids-pack__flavors {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    align-items: flex-end;
-    gap: 2px;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.kids-pack__carton {
-    width: clamp(58px, 9vw, 88px);
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.12));
-}
-
-.kids-pack__carton--mango {
-    transform: translateY(-6px) rotate(-2deg);
-}
-
-.kids-pack__carton--manzana {
-    transform: translateY(0);
-    z-index: 2;
-}
-
-.kids-pack__carton--naranja {
-    transform: translateY(-4px) rotate(2deg);
+    border-radius: 12px;
 }
 
 @media (max-width: 900px) {
@@ -277,19 +241,8 @@
     }
 
     .kids-pack__media {
-        justify-content: center;
-        min-height: 200px;
         max-width: 420px;
         margin: 0 auto;
-    }
-
-    .kids-pack__flavors {
-        left: 8%;
-        bottom: 4%;
-    }
-
-    .kids-pack__carton {
-        width: clamp(48px, 14vw, 72px);
     }
 }
 

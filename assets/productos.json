@@ -55,6 +55,13 @@
       "title": "b'ui Kids Naranja",
       "sizes": ["11.15 Oz / 330 ml"],
       "circleColor": "#ffe0bf"
+    },
+    {
+      "id": 9,
+      "image": "/assets/images/productos-kids-uva.png",
+      "title": "b'ui Kids Uva",
+      "sizes": ["11.15 Oz / 330 ml"],
+      "circleColor": "#e5d9ee"
     }
   ]
 }

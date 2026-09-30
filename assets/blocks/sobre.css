@@ -2,7 +2,7 @@
    SOBRE BUI PAGE
    ==================================== */
 
-/* --- Hero: full-bleed photo + circular quote bubble --- */
+/* --- Hero: full-bleed water video --- */
 .sobre-hero {
     position: relative;
     width: 100%;
@@ -10,7 +10,7 @@
     overflow: hidden;
 }
 
-.sobre-hero__image {
+.sobre-hero__video {
     position: absolute;
     top: 0;
     left: 0;
@@ -18,32 +18,6 @@
     height: 100%;
     object-fit: cover;
     object-position: left center;
-}
-
-.sobre-hero__bubble {
-    position: absolute;
-    top: 50%;
-    right: 10%;
-    transform: translateY(-50%);
-    width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    background-color: rgba(246, 244, 245, 0.94);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-.sobre-hero__bubble-text {
-    font-family: var(--font-josefin);
-    font-weight: 400;
-    font-size: 19px;
-    line-height: 1.5;
-    color: #000000;
-    margin: 0;
 }
 
 /* --- Nuestro Origen --- */
@@ -424,12 +398,6 @@
     .sobre-hero {
         height: 520px;
     }
-
-    .sobre-hero__bubble {
-        width: 320px;
-        height: 320px;
-        padding: 40px;
-    }
 }
 
 @media (max-width: 900px) {
@@ -468,20 +436,8 @@
         height: 420px;
     }
 
-    .sobre-hero__image {
+    .sobre-hero__video {
         object-position: 10% center;
-    }
-
-    .sobre-hero__bubble {
-        width: 240px;
-        height: 240px;
-        right: 50%;
-        transform: translate(50%, -50%);
-        padding: 24px;
-    }
-
-    .sobre-hero__bubble-text {
-        font-size: 15px;
     }
 
     .origen__title,

@@ -73,3 +73,11 @@ div {
 .marquee__text {
     font-family: var(--font-satoshi) !important;
 }
+
+/* b'ui must always render lowercase, even inside all-caps titles —
+   inherit the parent title's font/weight instead of the generic span rule above. */
+.bui-lowercase {
+    text-transform: lowercase !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+}

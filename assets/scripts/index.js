@@ -378,7 +378,12 @@ class LanguageManager {
         const propiedadesTitle = document.querySelector('.propiedades__content_title');
         const propiedadesItems = document.querySelectorAll('.propiedades__content_item');
         
-        if (propiedadesTitle) propiedadesTitle.textContent = content.propiedades.title;
+        if (propiedadesTitle) {
+            propiedadesTitle.innerHTML = content.propiedades.title.replace(
+                /b'ui/gi,
+                '<span class="bui-lowercase">b\'ui</span>'
+            );
+        }
         propiedadesItems.forEach((item, index) => {
             if (content.propiedades.items[index]) {
                 item.textContent = content.propiedades.items[index];
@@ -1209,7 +1214,18 @@ class RetailerLogos {
                 img.loading = 'lazy';
                 img.decoding = 'async';
 
-                item.appendChild(img);
+                if (retailer.url) {
+                    const link = document.createElement('a');
+                    link.href = retailer.url;
+                    link.target = '_blank';
+                    link.rel = 'noopener';
+                    link.setAttribute('aria-label', retailer.name);
+                    link.appendChild(img);
+                    item.appendChild(link);
+                } else {
+                    item.appendChild(img);
+                }
+
                 container.appendChild(item);
             });
         });

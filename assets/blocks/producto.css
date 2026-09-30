@@ -356,7 +356,7 @@ body[data-product="packs"] .producto-presentacion__circle {
 .producto-encuentra {
     width: 100%;
     background-color: #f6f4f5;
-    padding: 0 40px 70px;
+    padding: 70px 40px;
     text-align: center;
 }
 
@@ -367,21 +367,21 @@ body[data-product="packs"] .producto-presentacion__circle {
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #000000;
-    margin: 0 0 40px 0;
+    margin: 0 0 20px 0;
 }
 
 .producto-encuentra__logos {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 24px;
+    gap: 8px 24px;
     max-width: 1291px;
     margin: 0 auto;
 }
 
 .producto-encuentra__logo {
-    width: 240px;
-    height: 240px;
+    width: 200px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;

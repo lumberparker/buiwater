@@ -1,6 +1,9 @@
 {
   "retailers": [
-    { "name": "OfficeMax", "logo": "/assets/images/logos/officemax.png" },
-    { "name": "Walmart", "logo": "/assets/images/logos/walmart.png" }
+    { "name": "OfficeMax", "logo": "/assets/images/logos/officemax.png", "url": "https://www.officemax.com.mx/" },
+    { "name": "Walmart", "logo": "/assets/images/logos/walmart.png", "url": "https://www.walmart.com.mx/ip/pack-de-12-agua-bui-natural-946-ml-bui/00075605814657" },
+    { "name": "Sam's Club", "logo": "/assets/images/logos/sams.png", "url": "https://www.sams.com.mx/ip/agua-gasificada-buii-6-pzas-sabor-pepino-6-pzas-sabor-hierbabuena-de-290-ml-c-u/981057469" },
+    { "name": "Alsuper", "logo": "/assets/images/logos/alsuper.png", "url": "https://alsuper.com/filtros?keyword=BUI&ecommerce=true" },
+    { "name": "Justo", "logo": "/assets/images/logos/justo.png", "url": "https://justo.mx/search?query=B%27ui" }
   ]
 }

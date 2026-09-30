@@ -6,20 +6,24 @@
     "slides": [
       {
         "title": "PURA, SILENCIOSA Y ESENCIAL",
-        "subtitle": "Ahora más cerca de ti. Ya disponible en Office Max, Sam's y Walmart."
+        "subtitle": "Ahora más cerca de ti."
       },
       {
         "title": "La misma, elección consciente, ahora para los más pequeños.",
+        "subtitle": "Ya disponible en Walmart, Justo, Alsuper y Office Max."
+      },
+      {
+        "title": "",
         "subtitle": ""
       }
     ],
     "marquee": "ERES LO QUE TOMAS",
     "conoce": {
       "text": "No la alteramos, la embotellamos como la naturaleza la entrega.",
-      "button": "CONOCE MÁS SOBRE B'UI"
+      "button": "CONOCE MÁS SOBRE b'ui"
     },
     "propiedades": {
-      "title": "CON MÁS DE 10 PROPIEDADES MINERALES B'UI ES...",
+      "title": "CON MÁS DE 10 PROPIEDADES MINERALES b'ui ES...",
       "items": [
         "Extraída de manantiales",
         "Mineralizada de forma natural",
@@ -48,20 +52,24 @@
     "slides": [
       {
         "title": "PURE, QUIET AND ESSENTIAL",
-        "subtitle": "Now closer to you. Already available at Office Max, Sam's and Walmart."
+        "subtitle": "Now closer to you."
       },
       {
         "title": "The same conscious choice, now for the little ones.",
+        "subtitle": "Already available at Walmart, Justo, Alsuper and Office Max."
+      },
+      {
+        "title": "",
         "subtitle": ""
       }
     ],
     "marquee": "YOU ARE WHAT YOU DRINK",
     "conoce": {
       "text": "We don't alter it, we bottle it just as nature delivers it.",
-      "button": "LEARN MORE ABOUT B'UI"
+      "button": "LEARN MORE ABOUT b'ui"
     },
     "propiedades": {
-      "title": "WITH MORE THAN 10 MINERAL PROPERTIES B'UI IS...",
+      "title": "WITH MORE THAN 10 MINERAL PROPERTIES b'ui IS...",
       "items": [
         "Extracted from springs",
         "Naturally mineralized",

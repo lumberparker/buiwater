@@ -83,6 +83,8 @@ export async function handleContactRequest(request, env) {
     });
 
     if (!resendResponse.ok) {
+        const detail = await resendResponse.text();
+        console.error("Resend API error", resendResponse.status, detail);
         return Response.json({ ok: false, error: "email_send_failed" }, { status: 502 });
     }
 
