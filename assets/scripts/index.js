@@ -196,7 +196,7 @@ class LanguageManager {
             // Fallback to default content if loading fails
             this.content = {
                 es: {
-                    title: 'BUI',
+                    title: "b'ui",
                     nav: ['Nosotros', 'Productos', 'Contacto'],
                     navProducts: ['Agua natural', 'Agua gasificada', 'Infusiones', "b'ui Kids"],
                     slides: [{ title: 'BUI', subtitle: 'Agua natural de manantial' }],
@@ -207,7 +207,7 @@ class LanguageManager {
                     showcase: { title: 'Agua natural' }
                 },
                 en: {
-                    title: 'BUI',
+                    title: "b'ui",
                     nav: ['About Us', 'Products', 'Contact'],
                     navProducts: ['Natural water', 'Sparkling water', 'Infusions', "b'ui Kids"],
                     slides: [{ title: 'BUI', subtitle: 'Natural spring water' }],
