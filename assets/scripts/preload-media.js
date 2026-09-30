@@ -38,9 +38,7 @@
     window.buiWarmMedia = (root) => warmTree(root);
 
     function bindInViewPlayback() {
-        const videos = document.querySelectorAll(
-            '.showcase__video, .manifiesto__video, .propiedades__imagen'
-        );
+        const videos = document.querySelectorAll('.showcase__video, .manifiesto__video');
         if (!videos.length) return;
 
         const io = new IntersectionObserver(
