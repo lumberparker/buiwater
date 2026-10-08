@@ -5,7 +5,7 @@
     width: 100%;
     background-color: #f6f4f5;
     color: #000;
-    padding: 60px 0 30px 0;
+    padding: 60px 0 90px 0;
     margin-top: 0;
     box-sizing: border-box;
 }
@@ -168,7 +168,7 @@
    ==================================== */
 @media (max-width: 768px) {
     .footer {
-        padding: 40px 0 20px;
+        padding: 40px 0 90px;
     }
 
     .footer__grid {
