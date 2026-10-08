@@ -413,20 +413,12 @@
     }
 
     .notas__row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
+        flex-direction: column;
     }
 
     .notas__photo {
         width: 100%;
-        height: auto;
-        aspect-ratio: 2 / 3;
-    }
-
-    .notas__text {
-        grid-column: 1 / -1;
-        margin-top: 12px;
+        height: 260px;
     }
 
     .notas__text {
@@ -462,6 +454,22 @@
 
     .notas__row {
         padding: 50px 20px 0;
+    }
+
+    .notas__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .notas__photo {
+        height: auto;
+        aspect-ratio: 2 / 3;
+    }
+
+    .notas__text {
+        grid-column: 1 / -1;
+        margin-top: 12px;
     }
 
     .componentes {
