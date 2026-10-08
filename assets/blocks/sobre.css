@@ -382,6 +382,39 @@
     color: #c62828;
 }
 
+/* Contacto: divider + WhatsApp button under the form */
+.sobre-distribuidor__divider {
+    width: 100%;
+    margin: 0;
+    border: none;
+    border-top: 1px solid #000000;
+}
+
+.sobre-distribuidor__whatsapp {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #25D366;
+    color: #000000;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    padding: 16px 40px;
+    border-radius: 0;
+}
+
+.sobre-distribuidor__whatsapp:hover {
+    background-color: #1fb85a;
+    color: #000000;
+}
+
+.sobre-distribuidor__whatsapp-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
 /* Honeypot: hidden from real visitors, left for bots to fill in */
 .sobre-distribuidor__field--trap {
     position: absolute;
