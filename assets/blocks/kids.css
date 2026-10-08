@@ -143,6 +143,8 @@
 }
 
 .kids-flavor__name {
+    position: relative;
+    z-index: 2;
     margin: 0 0 4px;
     font-family: var(--font-josefin);
     font-weight: 600;
@@ -166,6 +168,8 @@
 }
 
 .kids-flavor__size {
+    position: relative;
+    z-index: 2;
     margin: 0;
     font-family: var(--font-josefin);
     font-weight: 400;
@@ -227,6 +231,10 @@
         grid-template-columns: 1fr;
         padding: 50px 24px 40px;
         gap: 36px;
+    }
+
+    .kids-flavor__media {
+        height: 320px;
     }
 
     .kids-pack {
