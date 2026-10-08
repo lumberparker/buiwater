@@ -1,45 +1,52 @@
-/* Floating WhatsApp button (all pages). The label and logo are cut out of
-   the green shape with an SVG mask, so the page shows through them. */
+/* Floating WhatsApp button (all pages) */
 .wa-float {
     position: fixed;
     right: 20px;
     bottom: calc(20px + env(safe-area-inset-bottom, 0px));
     z-index: 900;
-    display: block;
-    line-height: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 52px;
+    padding: 0 24px 0 20px;
+    border-radius: 999px;
+    background-color: #25D366;
+    color: #000000;
     text-decoration: none;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.22));
-    transition: transform 0.2s ease;
-}
-
-.wa-float__shape {
-    fill: #25D366;
-    transition: fill 0.2s ease;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .wa-float:hover {
+    background-color: #1fb85a;
+    color: #000000;
     transform: translateY(-2px);
 }
 
-.wa-float:hover .wa-float__shape {
-    fill: #1fb85a;
-}
-
-.wa-float__svg--round {
-    display: none;
+.wa-float__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
     .wa-float {
         right: 16px;
         bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+        width: 56px;
+        height: 56px;
+        padding: 0;
     }
 
-    .wa-float__svg--pill {
+    .wa-float__icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .wa-float__label {
         display: none;
-    }
-
-    .wa-float__svg--round {
-        display: block;
     }
 }
